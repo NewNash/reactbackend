@@ -1,0 +1,23 @@
+
+#loginBox{
+    width: 100%;
+    height: 100%;
+    padding-top:15%;
+    min-height: 100vh;
+    /*background: -webkit-linear-gradient(135deg, #dadfd7, #b1cbae,#b0c8ab,#b1cbae,#bedda7); !* Safari 5.1 - 6.0 *!*/
+    /*background: -o-linear-gradient(135deg,#36ff8b, #98ff4b); !* Opera 11.1 - 12.0 *!*/
+    /*background: -moz-linear-gradient(135deg,#36ff8b, #98ff4b); !* Firefox 3.6 - 15 *!*/
+    /*background: linear-gradient(135deg,#dadfd7, #b1cbae,#b0c8ab,#b1cbae,#bedda7); !* 标准的语法 *!*/
+}
+#loginBox .login-form {
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+#loginBox .login-form-forgot {
+    float: right;
+}
+
+#loginBox .login-form-button {
+    width: 100%;
+}
