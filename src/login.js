@@ -9,8 +9,9 @@ class LoginForm extends React.Component {
         e.preventDefault()
         this.props.form.validateFields((err,value)=>{
             if(!err){
-                this.props.dispatch({type:'login',text:value})
-                // axios.post('https://neveralone.cn/admin',{
+
+                this.props.dispatch({type:'saga-login',text:value})
+                // axios.post('http://127.0.0.1:3001/login',{
                 //     username:value.username,
                 //     password:value.password})
                 //     .then((res)=>{
