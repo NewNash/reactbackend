@@ -9,7 +9,7 @@ import logger from 'redux-logger'
 import Login from './login'
 import rootReducer from './reducer'
 import mysaga from './saga'
-
+import App from "./App";
 const sagaMiddleware = createSagaMiddleware()
 const store = createStore(rootReducer,applyMiddleware(sagaMiddleware,logger))
 sagaMiddleware.run(mysaga)
@@ -18,6 +18,7 @@ ReactDOM.render(
     <Provider store={store}>
         <Router>
             <Route path='/login' component={Login}/>
+            <Route path='/' component={App}/>
         </Router>
     </Provider>,
         document.getElementById('root'));

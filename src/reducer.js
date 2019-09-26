@@ -1,13 +1,12 @@
 const initState = {
-
+    iflogin:false
 }
 
 
 const reducer = (state=initState,action)=>{
     switch (action.type) {
         case 'login':
-            // console.log(action.text)
-            return state
+            return {...state,iflogin: action.text}
         default:
             return state
     }

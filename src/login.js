@@ -1,25 +1,62 @@
 import React from "react";
-import {Form, Icon, Input, Button, Checkbox} from "antd";
+import {Form, Icon, Input, Button, Checkbox, message} from "antd";
 import {connect} from 'react-redux'
 import './login.css'
 import axios from 'axios'
+import {withRouter} from "react-router-dom";
 
 class LoginForm extends React.Component {
-    handleSubmit = e => {
-        e.preventDefault()
-        this.props.form.validateFields((err,value)=>{
-            if(!err){
-
-                this.props.dispatch({type:'saga-login',text:value})
-                // axios.post('http://127.0.0.1:3001/login',{
-                //     username:value.username,
-                //     password:value.password})
-                //     .then((res)=>{
-                //     console.log(res)
-                // })
-                // console.log(value)
+    componentDidMount() {
+        //获取cookie中的用户名
+        this.props.form.setFields({
+            username: {
+                value: this.getCookie('username'),
+                error: [new Error('forbid ha')],
             }
         })
+    }
+
+    handleSubmit = e => {
+        e.preventDefault()
+        this.props.form.validateFields((err, value) => {
+
+            if (!err) {
+                //是否设置cookie
+                if (value.remember) {
+                    this.setCookie('username', value.username, 1)
+                } else {
+                    this.delCookie('username')
+                }
+                axios.post('http://127.0.0.1:3001/login', value).then((res) => {
+                    if (res.data === 'ok') {
+                        message.success('登陆成功')
+                        this.props.dispatch({type: 'login', text: true})
+                        this.props.history.push('/')
+                    } else {
+                        message.error('账号或者密码不对，请重新输入！')
+                        this.props.form.resetFields(['password'])
+                        this.props.history.push('/login')
+                    }
+                }).catch((error) => console.log(error))
+            }
+        })
+    }
+    setCookie = (name, value, day) => {
+        const date = new Date();
+        date.setDate(date.getDate() + day);
+        document.cookie = name + '=' + value + ';expires=' + date;
+    }
+    getCookie = (name) => {
+        const reg = RegExp(name + '=([^;]+)');
+        const arr = document.cookie.match(reg);
+        if (arr) {
+            return arr[1];
+        } else {
+            return '';
+        }
+    }
+    delCookie = (name) => {
+        this.setCookie(name, null, -1);
     }
 
     render() {
@@ -38,18 +75,18 @@ class LoginForm extends React.Component {
                         }
                     </Form.Item>
                     <Form.Item>
-                        {getFieldDecorator('password',{
-                            rules:[{required:true,message:'please input your password'}]
+                        {getFieldDecorator('password', {
+                            rules: [{required: true, message: 'please input your password'}]
                         })(
                             <Input
                                 type='password'
-                                prefix={<Icon type='lock'style={{color: 'rgba(0,0,0,0.25)'}}/>}
+                                prefix={<Icon type='lock' style={{color: 'rgba(0,0,0,0.25)'}}/>}
                                 placeholder='Password'
                             />
                         )}
                     </Form.Item>
                     <Form.Item>
-                        {getFieldDecorator('remember',{valuePropName:'checked',initialValue:true})(
+                        {getFieldDecorator('remember', {valuePropName: 'checked', initialValue: true})(
                             <Checkbox>Remember me</Checkbox>
                         )}
                         <a href="/" className='login-form-forgot'>Forget password</a>
@@ -63,15 +100,9 @@ class LoginForm extends React.Component {
     }
 }
 
-const mapStateToProps=(state)=>{
-    return ({
-
-    })
-}
-const mapDispatchToProps=(dispatch)=>({
+const mapStateToProps = (state) => ({})
+const mapDispatchToProps = (dispatch) => ({
     dispatch
 })
 
-
-const Wrapper = connect(mapStateToProps,mapDispatchToProps)(Form.create()(LoginForm))
-export default Wrapper
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Form.create()(LoginForm)))
