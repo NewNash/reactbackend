@@ -2,7 +2,6 @@ import json
 from flask import Flask,request
 from flask_cors import CORS
 
-
 app = Flask(__name__)
 @app.route('/login',methods=['POST'])
 def login():
@@ -10,6 +9,11 @@ def login():
     if reqdata['username'] == '123' and reqdata['password'] == '123':
         return 'ok'
     return 'false'
+
+
+@app.route('/')
+def index():
+    return 'hello'
 
 
 if __name__ == '__main__':
