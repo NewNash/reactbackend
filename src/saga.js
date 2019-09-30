@@ -19,8 +19,28 @@ function* logindata(action) {
     yield put({type: 'login', text: data})
 }
 
+function* getContentAsync() {
+    let data
+    yield axios.get('https://neveralone.cn/api/articleInfo?id=5d8c623d0f2ae6058072063e').then((res)=>data = res.data[0])
+    yield put({type:'content',text:data})
+}
+function* getContent(){
+    yield takeEvery('getContent',getContentAsync)
+}
+
+
+function* getCategoryAsync() {
+    let data
+    yield axios.get('https://neveralone.cn/api/getCategory').then(res=>data=res.data)
+    yield put({type:'category',text:data})
+}
+function* getCategory() {
+    yield takeEvery('getCategory',getCategoryAsync)
+}
 export default function* rootsaga() {
     yield all([
-        login()
+        login(),
+        getContent(),
+        getCategory()
     ])
 }

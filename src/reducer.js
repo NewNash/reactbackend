@@ -1,6 +1,8 @@
 const initState = {
     iflogin:false,
-    submitdata:{}
+    submitdata:{},
+    content:{},
+    category:[],
 }
 
 
@@ -10,6 +12,10 @@ const reducer = (state=initState,action)=>{
             return {...state,iflogin: action.text}
         case 'submit':
             return {...state,submitdata: action.text}
+        case 'content':
+            return {...state,content:action.text}
+        case 'category':
+            return {...state,category: action.text}
         default:
             return state
     }
