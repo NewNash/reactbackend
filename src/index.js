@@ -10,7 +10,7 @@ import Login from './login'
 import rootReducer from './reducer'
 import mysaga from './saga'
 import App from "./App";
-
+import MyLayout from './Layout';
 const sagaMiddleware = createSagaMiddleware()
 const store = createStore(rootReducer,applyMiddleware(sagaMiddleware,logger))
 sagaMiddleware.run(mysaga)
@@ -18,8 +18,9 @@ sagaMiddleware.run(mysaga)
 ReactDOM.render(
     <Provider store={store}>
         <Router>
+            <Route path='/admin' component={App}/>
             <Route path='/login' component={Login}/>
-            <Route path='/' component={App}/>
+            <Route path='/' component={MyLayout}/>
         </Router>
     </Provider>,
         document.getElementById('root'));

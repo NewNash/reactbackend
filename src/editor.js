@@ -37,9 +37,10 @@ BraftEditor.use([
 class Formdemo extends React.Component {
 
     componentDidMount() {
-        this.props.dispatch({type: 'getContent'})
+        // this.props.dispatch({type: 'getContent'})
         this.props.dispatch({type: 'getCategory'})
     }
+
     handleSubmit = (event) => {
         event.preventDefault()
         this.props.form.validateFields((error, values) => {
@@ -48,7 +49,7 @@ class Formdemo extends React.Component {
                     title: values.title,
                     RawContent: values.content.toRAW(),
                     HtmlContent: values.content.toHTML(),
-                    currentCategory:values.category
+                    currentCategory: values.category
                 }
                 console.log(submitData)
                 this.props.dispatch({type: 'submit', text: submitData})
@@ -59,7 +60,7 @@ class Formdemo extends React.Component {
     render() {
         const {getFieldDecorator} = this.props.form
         const excludeControls = ['emoji', 'undo', 'redo', 'headings', 'list-ul', 'list-ol', 'font-size',
-            'font-family','line-height', 'letter-spacing', 'bold', 'italic']
+            'font-family', 'line-height', 'letter-spacing', 'bold', 'italic']
         const myUploadFn = (param) => {
             console.log(param)
             const data = new FormData()
@@ -86,39 +87,40 @@ class Formdemo extends React.Component {
                         })
                     }
                     array.push({
-                                value: category.name,
-                                label: category.name,
-                                children: subArray
-                            })
+                        value: category.name,
+                        label: category.name,
+                        children: subArray
+                    })
                 })
             }
             return array
         }
         return (
-            <div>
-                <Form onSubmit={this.handleSubmit} >
+            <div style={{width:'80%',padding:'20px',backgroundColor:'#fff'}}>
+                <Form onSubmit={this.handleSubmit}>
                     <Form.Item
 
                     >
                         {getFieldDecorator('title', {
-                            initialValue: this.props.content.title,
+                            // initialValue: this.props.content.title,
                             rules: [{
                                 required: true,
                                 message: '请输入标题',
                             }],
                         })(
-                            <Input  />
+                            <Input placeholder='请输入标题'/>
                         )}
                     </Form.Item>
                     <Form.Item
 
                     >
-                        {getFieldDecorator('category',{
-                            initialValue:[this.props.content.category,this.props.content.subCategory]
+                        {getFieldDecorator('category', {
+                            // initialValue: [this.props.content.category, this.props.content.subCategory]
                         })(
                             <Cascader
                                 options={this.props.category[0] ? categoryOptions(this.props.category) : []}
                                 expandTrigger="hover"
+                                style={{width:300}}
                                 placeholder="请选择目录"
                             />
                         )}
@@ -143,7 +145,7 @@ class Formdemo extends React.Component {
                             <BraftEditor
                                 // value={this.props.content.content}
 
-                                style={{border: '1px solid #eee', borderRadius: '3px'}}
+                                style={{border: '1px solid #eee', borderRadius: '3px',height:'450px',overflow:'hidden'}}
                                 media={{uploadFn: myUploadFn}}
                                 excludeControls={excludeControls}
                             />
