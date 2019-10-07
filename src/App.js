@@ -4,7 +4,7 @@ import {withRouter, BrowserRouter as Router, Route, Link} from "react-router-dom
 // import {message} from "antd";
 import {Menu, Icon} from 'antd';
 import Editor from './editor'
-
+import ContentList from "./contentlist";
 const {SubMenu} = Menu;
 
 class App extends React.Component {
@@ -21,7 +21,7 @@ class App extends React.Component {
     render() {
         return (
             <Router>
-                <div style={{display: 'flex'}}>
+                 <div style={{display: 'flex'}}>
                     <Menu
                         // onClick={this.handleClick}
                         style={{width: 256}}
@@ -40,10 +40,12 @@ class App extends React.Component {
                         >
                             <Menu.ItemGroup key="g1" title="Item 1">
                                 <Menu.Item key="1"><Link to='/content'>create article</Link></Menu.Item>
-                                <Menu.Item key="2"><Link to='/edit-content'>edit article</Link></Menu.Item>
+                                <Menu.Item key="2"><Link to={{pathname:'edit-content',state:{edit:true}}}>edit article</Link></Menu.Item>
                             </Menu.ItemGroup>
                             <Menu.ItemGroup key="g2" title="Item 2">
-                                <Menu.Item key="3">Option 3</Menu.Item>
+                                <Menu.Item key="3">
+                                    <Link to='/contentlist'>content list</Link>
+                                </Menu.Item>
                                 <Menu.Item key="4">Option 4</Menu.Item>
                             </Menu.ItemGroup>
                         </SubMenu>
@@ -79,7 +81,8 @@ class App extends React.Component {
                         </SubMenu>
                     </Menu>
                     <Route path='/content' component={Editor}/>
-                    <Route path='/edit-content' component={Editor}/>
+                    <Route path='/edit-content' component={Editor }/>
+                    <Route path='/contentlist' component={ContentList} />
                 </div>
             </Router>
         )

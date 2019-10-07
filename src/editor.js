@@ -37,7 +37,10 @@ BraftEditor.use([
 class Formdemo extends React.Component {
 
     componentDidMount() {
-        // this.props.dispatch({type: 'getContent'})
+        // console.log(this.props.location.state)
+        if(this.props.location.state){
+            this.props.dispatch({type: 'getContent'})
+        }
         this.props.dispatch({type: 'getCategory'})
     }
 
@@ -58,6 +61,7 @@ class Formdemo extends React.Component {
     }
 
     render() {
+        const ifEditContent = this.props.location.state
         const {getFieldDecorator} = this.props.form
         const excludeControls = ['emoji', 'undo', 'redo', 'headings', 'list-ul', 'list-ol', 'font-size',
             'font-family', 'line-height', 'letter-spacing', 'bold', 'italic']
@@ -99,10 +103,9 @@ class Formdemo extends React.Component {
             <div style={{width:'80%',padding:'20px',backgroundColor:'#fff'}}>
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Item
-
                     >
                         {getFieldDecorator('title', {
-                            // initialValue: this.props.content.title,
+                            initialValue: ifEditContent?this.props.content.title:'',
                             rules: [{
                                 required: true,
                                 message: '请输入标题',
@@ -115,7 +118,7 @@ class Formdemo extends React.Component {
 
                     >
                         {getFieldDecorator('category', {
-                            // initialValue: [this.props.content.category, this.props.content.subCategory]
+                            initialValue: ifEditContent?[this.props.content.category, this.props.content.subCategory]:[]
                         })(
                             <Cascader
                                 options={this.props.category[0] ? categoryOptions(this.props.category) : []}
@@ -126,11 +129,10 @@ class Formdemo extends React.Component {
                         )}
                     </Form.Item>
                     <Form.Item
-
                     >
                         {getFieldDecorator('content', {
                             validateTrigger: 'onBlur',
-                            initialValue: BraftEditor.createEditorState(this.props.content.content),
+                            initialValue: ifEditContent?BraftEditor.createEditorState(this.props.content.content):'',
                             rules: [{
                                 required: true,
                                 validator: (_, value, callback) => {

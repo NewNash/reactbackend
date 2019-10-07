@@ -31,7 +31,7 @@ class LoginForm extends React.Component {
                     if (res.data === 'ok') {
                         message.success('登陆成功')
                         this.props.dispatch({type: 'login', text: true})
-                        this.props.history.push('/')
+                        this.props.history.push('/admin')
                     } else {
                         message.error('账号或者密码不对，请重新输入！')
                         this.props.form.resetFields(['password'])

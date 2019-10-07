@@ -1,6 +1,6 @@
 import React from "react";
 import {Layout, Menu, Breadcrumb, Icon} from 'antd';
-import { BrowserRouter as Router, Route, Link} from "react-router-dom";
+import {  Route, Link} from "react-router-dom";
 import Editor from "./editor";
 const {Header, Content, Footer, Sider} = Layout;
 const {SubMenu} = Menu;
@@ -16,7 +16,6 @@ export default class MyLayout extends React.Component {
 
     render() {
         return (
-           <Router>
                <Layout style={{minHeight: '100vh'}}>
                 <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
                     <div className="logo" style={{color:'#fff',fontSize:'24px',textAlign:'center'}}>
@@ -75,7 +74,6 @@ export default class MyLayout extends React.Component {
                     <Footer style={{textAlign: 'center'}}>Ant Design ©2018 Created by Ant UED</Footer>
                 </Layout>
             </Layout>
-           </Router>
         );
     }
 }
