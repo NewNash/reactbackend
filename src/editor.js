@@ -37,8 +37,7 @@ BraftEditor.use([
 class Formdemo extends React.Component {
 
     componentDidMount() {
-        // console.log(this.props.location.state)
-        if(this.props.location.state){
+        if(this.props.location.pathname==='/edit-content'){
             this.props.dispatch({type: 'getContent'})
         }
         this.props.dispatch({type: 'getCategory'})
@@ -61,7 +60,7 @@ class Formdemo extends React.Component {
     }
 
     render() {
-        const ifEditContent = this.props.location.state
+        const ifEditContent = this.props.location.pathname==='/edit-content'
         const {getFieldDecorator} = this.props.form
         const excludeControls = ['emoji', 'undo', 'redo', 'headings', 'list-ul', 'list-ol', 'font-size',
             'font-family', 'line-height', 'letter-spacing', 'bold', 'italic']

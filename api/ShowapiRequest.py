@@ -1,4 +1,3 @@
-# from ShowapiRequest import ShowapiRequest
 import requests
 from urllib import parse
 #全局请求头
@@ -7,7 +6,6 @@ headers = {}
 body = {}
 timeouts = {}
 resHeader = {}
-
 
 class ShowapiRequest:
     def __init__(self, url, my_appId, my_appSecret):
@@ -54,8 +52,4 @@ class ShowapiRequest:
         return res
 
 
-r = ShowapiRequest("http://route.showapi.com/1072-1","106118","723982daaf6148cbb20882360ac4ddc9" )
-r.addBodyPara("idcard", "410381197409226041")
-r.addBodyPara("name", "武从丽")
-res = r.post()
-print(res.text)
+

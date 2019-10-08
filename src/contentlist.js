@@ -3,9 +3,9 @@ import {Table, Divider, Tag} from "antd";
 
 export default class ContentList extends React.Component {
     render() {
-        const columns = [
+        const columns1 = [
             {
-                title: 'Name',
+                title: '#',
                 dataIndex: 'name',
                 key: 'name',
                 render: text => <a>{text}</a>,
@@ -53,7 +53,7 @@ export default class ContentList extends React.Component {
             },
         ];
 
-        const data = [
+        const data1 = [
             {
                 key: '1',
                 name: 'John Brown',
@@ -76,9 +76,60 @@ export default class ContentList extends React.Component {
                 tags: ['cool', 'teacher'],
             },
         ];
+
+        const columns = [
+            {
+                title:'#',
+                dataIndex:'listNumber',
+                key:'listNumber',
+                render: a=>a
+            },
+            {
+                title:'发布时间',
+                dataIndex:'publishDate',
+                key:'publishDate',
+                render: a=>a
+            },
+            {
+                title:'修改时间',
+                dataIndex:'modifyDate',
+                key:'modifyDate',
+                render: a=>a
+            },
+            {
+                title:'Title',
+                dataIndex:'title',
+                key:'title',
+                render: a=>a
+            },
+            {
+                title:'Category',
+                dataIndex:'category',
+                key:'category',
+                render: a=>a
+            },
+            {
+                title:'subCategory',
+                dataIndex:'subCategory',
+                key:'subCategory',
+                render: a=>a
+            },
+            {
+                title:'tag',
+                dataIndex:'tag',
+                key:'tag',
+                render: a=>a
+            },
+            {
+                title:'operate',
+                dataIndex:'operate',
+                key:'operate',
+                render: a=>a
+            },
+        ]
         return (
-            <div>
-                <Table columns={columns} dataSource={data}/>
+            <div style={{width:'80%'}}>
+                <Table columns={columns} dataSource={data1}/>
             </div>
         )
     }
