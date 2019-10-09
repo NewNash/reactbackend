@@ -1,100 +1,24 @@
 import React from "react";
 import {Table, Divider, Tag} from "antd";
-
-export default class ContentList extends React.Component {
+import {connect} from 'react-redux'
+import moment from "moment";
+ class ContentList extends React.Component {
+    componentDidMount() {
+        this.props.dispatch({type:'contentlist'})
+    }
     render() {
-        const columns1 = [
-            {
-                title: '#',
-                dataIndex: 'name',
-                key: 'name',
-                render: text => <a>{text}</a>,
-            },
-            {
-                title: 'Age',
-                dataIndex: 'age',
-                key: 'age',
-            },
-            {
-                title: 'Address',
-                dataIndex: 'address',
-                key: 'address',
-            },
-            {
-                title: 'Tags',
-                key: 'tags',
-                dataIndex: 'tags',
-                render: tags => (
-                    <span>
-        {tags.map(tag => {
-            let color = tag.length > 5 ? 'geekblue' : 'green';
-            if (tag === 'loser') {
-                color = 'volcano';
-            }
-            return (
-                <Tag color={color} key={tag}>
-                    {tag.toUpperCase()}
-                </Tag>
-            );
-        })}
-      </span>
-                ),
-            },
-            {
-                title: 'Action',
-                key: 'action',
-                render: (text, record) => (
-                    <span>
-        <a>Invite {record.name}</a>
-        <Divider type="vertical"/>
-        <a>Delete</a>
-      </span>
-                ),
-            },
-        ];
-
-        const data1 = [
-            {
-                key: '1',
-                name: 'John Brown',
-                age: 32,
-                address: 'New York No. 1 Lake Park',
-                tags: ['nice', 'developer'],
-            },
-            {
-                key: '2',
-                name: 'Jim Green',
-                age: 42,
-                address: 'London No. 1 Lake Park',
-                tags: ['loser'],
-            },
-            {
-                key: '3',
-                name: 'Joe Black',
-                age: 32,
-                address: 'Sidney No. 1 Lake Park',
-                tags: ['cool', 'teacher'],
-            },
-        ];
-
         const columns = [
             {
-                title:'#',
-                dataIndex:'listNumber',
-                key:'listNumber',
-                render: a=>a
-            },
-            {
                 title:'发布时间',
-                dataIndex:'publishDate',
+                dataIndex:'date',
                 key:'publishDate',
-                render: a=>a
+                render: a=>moment(a.$date).format('YYYY-MM-DD h:mm:ss')
             },
             {
                 title:'修改时间',
-                dataIndex:'modifyDate',
+                dataIndex:'changeDate',
                 key:'modifyDate',
-                render: a=>a
+                render: a=>moment(a.$date).format('YYYY-MM-DD h:mm:ss')
             },
             {
                 title:'Title',
@@ -118,19 +42,32 @@ export default class ContentList extends React.Component {
                 title:'tag',
                 dataIndex:'tag',
                 key:'tag',
-                render: a=>a
+                render: tags=>(
+                    <span>
+                        {tags.map(tag=> (<Tag>{tag}</Tag>))}
+                    </span>
+                )
             },
             {
                 title:'operate',
-                dataIndex:'operate',
+                // dataIndex:'operate',
                 key:'operate',
                 render: a=>a
             },
         ]
         return (
             <div style={{width:'80%'}}>
-                <Table columns={columns} dataSource={data1}/>
+                <Table columns={columns} rowKey={record=>record._id.$oid} bordered
+                       dataSource={this.props.contentlist.data?this.props.contentlist.data:[]}/>
             </div>
         )
     }
 }
+const mapStateToProps = (state) => ({
+    contentlist: state.contentlist,
+})
+const mapDispatchToProps = (dispatch) => ({
+    dispatch
+})
+
+export default connect(mapStateToProps,mapDispatchToProps)(ContentList)

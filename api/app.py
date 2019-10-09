@@ -1,61 +1,17 @@
-# from ShowapiRequest import ShowapiRequest
-import requests
-from urllib import parse
-#全局请求头
-files = {}
-headers = {}
-body = {}
-timeouts = {}
-resHeader = {}
-
-
-class ShowapiRequest:
-    def __init__(self, url, my_appId, my_appSecret):
-        self.url = url
-        self.my_appId = my_appId
-        self.my_appSecret = my_appSecret
-        body["showapi_appid"] = my_appId
-        body["showapi_sign"] = my_appSecret
-        headers["User-Agent"] = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2427.7 Safari/537.36"
-
-    def addFilePara(self, key, value_url):
-        files[key] = open(r"%s" % (value_url), 'rb')
-        return self
-
-    def addHeadPara(self, key, value):
-        headers[key] = value
-        return self
-
-    def addBodyPara(self, key, value):
-        body[key] = value
-        return self
-    #设置连接时间和读取时间
-    def setTimeout(self, connecttimout, readtimeout):
-        timeouts["connecttimout"] = connecttimout
-        timeouts["readtimeout"] = readtimeout
-        return self
-
-
-    def get(self):
-        get_url = self.url + "?" + parse.urlencode(body)
-        if not timeouts:
-            res = requests.get(get_url, headers=headers)
-        else:
-            timeout = (timeouts["connecttimout"], timeouts["readtimeout"])
-            res = requests.get(get_url, headers=headers, timeout=timeouts)
-        return res
-
-    def post(self):
-        if not timeouts:
-            res = requests.post(self.url, files=files, data=body, headers=headers)
-        else:
-            timeout = (timeouts["connecttimout"], timeouts["readtimeout"])
-            res = requests.post(self.url, files=files, data=body, headers=headers, timeout=timeout)
-        return res
-
-
-r = ShowapiRequest("http://route.showapi.com/1072-1","106118","723982daaf6148cbb20882360ac4ddc9" )
-r.addBodyPara("idcard", "410381197409226041")
-r.addBodyPara("name", "武从丽")
-res = r.post()
-print(res.text)
+# from pymongo import MongoClient
+import pymongo,json
+from bson import  json_util
+client = pymongo.MongoClient('mongodb://localhost:27017')
+# client = MongoClient('mongodb://localhost:27017/')
+dblist = client.list_database_names()
+mydb = client['mydb']
+mycollection = mydb['test']
+result=[]
+for x in mycollection.find():
+    result.append(x)
+data = json_util.dumps(result)
+print(data)
+# if 'blog' in dblist:
+#     print('exist')
+# else:
+#     print('no')

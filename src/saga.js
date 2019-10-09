@@ -37,10 +37,22 @@ function* getCategoryAsync() {
 function* getCategory() {
     yield takeEvery('getCategory',getCategoryAsync)
 }
+
+
+function* getConlentlistAsync() {
+    let data
+    yield axios.get('https://stayalone.cn/getcontent').then(res=>data=res.data)
+    yield put({type:'allcontent',text:data})
+}
+function* getConlentlist() {
+    yield takeEvery('contentlist',getConlentlistAsync)
+}
+
 export default function* rootsaga() {
     yield all([
         login(),
         getContent(),
-        getCategory()
+        getCategory(),
+        getConlentlist()
     ])
 }
