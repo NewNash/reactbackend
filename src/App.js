@@ -47,11 +47,12 @@ class App extends React.Component {
                         >
                             <Menu.ItemGroup key="g1" title="文章管理">
                                 <Menu.Item key="2"><Link to='/content'><Icon type="plus"/>发表文章</Link></Menu.Item>
-                                <Menu.Item key="3"><Link to='/edit-content'><Icon type="edit"/>编辑文章</Link></Menu.Item>
+                                {/*<Menu.Item key="3"><Link to='/edit-content'><Icon type="edit"/>编辑文章</Link></Menu.Item>*/}
                                 <Menu.Item key="4"><Link to='/contentlist'><Icon type="read"/>文章列表</Link></Menu.Item>
-                                <Menu.Item key="5"><Link to='/category'><Icon type="container"/>目录列表</Link></Menu.Item>
+
                             </Menu.ItemGroup>
-                            <Menu.ItemGroup key="g2" title="Item 2">
+                            <Menu.ItemGroup key="g2" title="目录管理">
+                                <Menu.Item key="5"><Link to='/category'><Icon type="container"/>目录列表</Link></Menu.Item>
                                 {/*<Menu.Item key="3">*/}
                                 {/*    <Link to='/contentlist'>content list</Link>*/}
                                 {/*</Menu.Item>*/}
@@ -91,7 +92,7 @@ class App extends React.Component {
                             <Menu.Item key="12">Option 12</Menu.Item>
                         </SubMenu>
                     </Menu>
-
+                    <Category />
                     <Route path='/content' component={Editor}/>
                     <Route path='/edit-content' component={Editor}/>
                     <Route path='/contentlist' component={ContentList}/>
