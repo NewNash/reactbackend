@@ -6,7 +6,7 @@ import {Menu, Icon} from 'antd';
 import Editor from './editor'
 import ContentList from "./contentlist";
 import Category from "./category";
-
+import PicManage from "./picmanage";
 const {SubMenu} = Menu;
 
 class App extends React.Component {
@@ -34,7 +34,7 @@ class App extends React.Component {
                         <Menu.Item key="1">
                             <Icon type="home"/>
                             首页
-                            <Link to='/'></Link>
+                            <Link to='/'/>
                         </Menu.Item>
                         <SubMenu
                             key="sub1"
@@ -53,50 +53,19 @@ class App extends React.Component {
                             </Menu.ItemGroup>
                             <Menu.ItemGroup key="g2" title="目录管理">
                                 <Menu.Item key="5"><Link to='/category'><Icon type="container"/>目录列表</Link></Menu.Item>
-                                {/*<Menu.Item key="3">*/}
-                                {/*    <Link to='/contentlist'>content list</Link>*/}
-                                {/*</Menu.Item>*/}
-                                {/*<Menu.Item key="4">*/}
-                                {/*    <Link to='/category'>category</Link>*/}
-                                {/*</Menu.Item>*/}
+                            </Menu.ItemGroup>
+                            <Menu.ItemGroup key="p2" title="图片管理">
+                                <Menu.Item key="6"><Link to='/picmanage'><Icon type="picture"/>图片列表</Link></Menu.Item>
                             </Menu.ItemGroup>
                         </SubMenu>
-                        <SubMenu
-                            key="sub2"
-                            title={
-                                <span>
-              <Icon type="appstore"/>
-              <span>Navigation Two</span>
-            </span>
-                            }
-                        >
-                            <Menu.Item key="5">Option 5</Menu.Item>
-                            <Menu.Item key="6">Option 6</Menu.Item>
-                            <SubMenu key="sub3" title="Submenu">
-                                <Menu.Item key="7">Option 7</Menu.Item>
-                                <Menu.Item key="8">Option 8</Menu.Item>
-                            </SubMenu>
-                        </SubMenu>
-                        <SubMenu
-                            key="sub4"
-                            title={
-                                <span>
-              <Icon type="setting"/>
-              <span>Navigation Three</span>
-            </span>
-                            }
-                        >
-                            <Menu.Item key="9">Option 9</Menu.Item>
-                            <Menu.Item key="10">Option 10</Menu.Item>
-                            <Menu.Item key="11">Option 11</Menu.Item>
-                            <Menu.Item key="12">Option 12</Menu.Item>
-                        </SubMenu>
+
                     </Menu>
-                    <Category />
+                    <PicManage />
                     <Route path='/content' component={Editor}/>
                     <Route path='/edit-content' component={Editor}/>
                     <Route path='/contentlist' component={ContentList}/>
                     <Route path='/category' component={Category}/>
+                    <Route path='/picmanage' component={PicManage}/>
                 </div>
             </Router>
         )

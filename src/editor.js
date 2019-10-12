@@ -11,10 +11,10 @@ import ColorPicker from 'braft-extensions/dist/color-picker'
 import Markdown from 'braft-extensions/dist/markdown'
 import 'prismjs/components/prism-python'
 import axios from 'axios'
-// import MyTagsInput from "./category";
+import UploadImage from "./uploadimage";
 import TagsInput from "react-tagsinput";
 import 'react-tagsinput/react-tagsinput.css'
-
+import './uploadimg.css'
 BraftEditor.use([
     CodeHighlighter({
         syntaxs: [
@@ -114,7 +114,9 @@ class Formdemo extends React.Component {
         }
         return (
             <div style={{width:'80%',padding:'20px',backgroundColor:'#fff'}}>
+                {/*<UploadImage/>*/}
                 <Form onSubmit={this.handleSubmit}>
+                    <UploadImage  />
                     <Form.Item
                     >
                         {getFieldDecorator('title', {
@@ -124,11 +126,12 @@ class Formdemo extends React.Component {
                                 message: '请输入标题',
                             }],
                         })(
-                            <Input placeholder='请输入标题'/>
+                            <Input placeholder='请输入标题'
+                                   style={{width:'40%'}}
+                            />
                         )}
                     </Form.Item>
                     <Form.Item
-
                     >
                         {getFieldDecorator('category', {
                             initialValue: ifEditContent?[init_content.category, init_content.subCategory]:[]
@@ -158,7 +161,7 @@ class Formdemo extends React.Component {
                             }],
                         })(
                             <BraftEditor
-                                style={{border: '1px solid #eee', borderRadius: '3px',overflow:'hidden',resize:'both'}}
+                                className='myBraftEditor'
                                 media={{uploadFn: myUploadFn}}
                                 excludeControls={excludeControls}
                             />

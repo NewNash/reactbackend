@@ -1,3 +1,30 @@
 .ant-upload-list{
     float: left;
 }
+/*.ant-upload.ant-upload-select-picture-card,*/
+/*.ant-upload-list-picture-card .ant-upload-list-item{*/
+/*    width:160px;*/
+/*    height: 93px;*/
+/*}*/
+
+.ant-form-item-control .react-tagsinput{
+    width:50%;
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+}
+.ant-form-item{
+    margin-bottom: 10px;
+}
+.myBraftEditor{
+    width:70%;
+    /*height: 450px;*/
+    border: 1px solid #eee;
+    border-radius: 3px;
+    overflow:hidden;
+    resize:both;
+}
+.myupload{
+    position: absolute;
+    top: 1%;
+    right: 40%;
+}
