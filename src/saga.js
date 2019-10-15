@@ -31,7 +31,7 @@ function* logindata(action) {
 
 function* getCategoryAsync() {
     let data
-    yield axios.get('https://neveralone.cn/api/getCategory').then(res=>data=res.data)
+    yield axios.get('https://stayalone.cn/getcategory').then(res=>data=res.data.data)
     yield put({type:'category',text:data})
 }
 function* getCategory() {

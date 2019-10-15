@@ -14,7 +14,12 @@ class PicturesWall extends React.Component {
     state = {
         previewVisible: false,
         previewImage: '',
-        fileList: []
+        fileList: [{
+            uid: '-2',
+        name: 'image.png',
+        status: 'done',
+            url:'https://www.xs9999.com.hk/images/home/banner/gb2312/chj_1909c.jpg?v=1011'
+        }]
     };
 
     handleCancel = () => this.setState({previewVisible: false});
@@ -49,7 +54,7 @@ class PicturesWall extends React.Component {
                     onPreview={this.handlePreview}
                     onChange={this.handleChange}
                 >
-                    {fileList.length >= 1 ? null : uploadButton}
+                    {fileList.length >= 2 ? null : uploadButton}
                 </Upload>
                 <Modal visible={previewVisible} footer={null} onCancel={this.handleCancel}>
                     <img alt="titleImage" style={{width: '100%'}} src={previewImage}/>

@@ -73,7 +73,7 @@ class Formdemo extends React.Component {
     }
 
     render() {
-        const ifEditContent = this.props.location.pathname==='/edit-content'
+        const ifEditContent = this.props.location.pathname==='/admin/edit-content'
         const init_content = this.props.location.state?this.props.location.state.text:{}
         const {getFieldDecorator} = this.props.form
         const excludeControls = ['emoji', 'undo', 'redo', 'headings', 'list-ul', 'list-ol', 'font-size',
@@ -171,7 +171,7 @@ class Formdemo extends React.Component {
                         {getFieldDecorator('tags',{
                             initialValue:ifEditContent?init_content.tag:[]
                         })(
-                            <TagsInput style={{lineHeight:1.5}}
+                            <TagsInput style={{lineHeight:2}}
                                onchange={(e)=>this.handleTagsInputChange(e)}
                             />
                         )}
