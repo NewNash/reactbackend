@@ -59,7 +59,7 @@ class Category extends React.Component {
             {title: '一级目录', dataIndex: 'name', key: 'name'},
             {title: '是否显示', dataIndex: 'show', key: 'show', render: (text) => text ? '显示' : '隐藏'},
             {
-                title: '操作', key: 'operation', render: (a) => {
+                title: '操作', key: 'operation',align:'center', render: (a) => {
                     const handledelete = (a) => {
                         axios.post('https://stayalone.cn/delcategory', {
                             categoryname: a.name
@@ -73,22 +73,21 @@ class Category extends React.Component {
                     return (
                         <div>
                             <a>
-                                <Icon type="plus" style={{marginRight: '10px'}}/>
+                                <Icon type="plus" style={{marginRight: '10px'}} title='添加二级目录'/>
                             </a>
-                            <a>
-                                <Icon type="eye" style={{marginRight: '10px'}}/>
+                            <a style={{marginRight: '10px'}}>
+                                <Switch checkedChildren="显示" unCheckedChildren="隐藏" onChange={this.switchOnchange} defaultChecked/>
                             </a>
-                            {/*<a onClick={() => handledelete(a)}>*/}
-                            {/*    <Icon type="delete"/>*/}
-                            {/*</a>*/}
+
                             <Popconfirm
                                 title="确定删除这个目录吗？"
                                 onConfirm={() => handledelete(a)}
-                                // onCancel={cancel}
                                 okText="Yes"
                                 cancelText="No"
                             >
-                                <Icon type="delete"/>
+                                <a>
+                                     <Icon type="delete" title='删除目录'/>
+                                </a>
                             </Popconfirm>
                         </div>
                     )
@@ -97,6 +96,9 @@ class Category extends React.Component {
         ];
         const data = this.props.category
         const expandedRowRender = (a, b, c, d) => {
+            const handledelete=(a)=>{
+                console.log(a)
+            }
             const columns = [
                 {
                     title: '序号', key: 'sort', render: (text, record, index) => {
@@ -105,14 +107,22 @@ class Category extends React.Component {
                 },
                 {title: '二级目录', dataIndex: 'name', key: 'name'},
                 {
-                    title: '操作', key: 'operation', render: () => (
+                    title: '操作', key: 'operation', render: (a) => (
                         <div>
-                            <a>
-                                <Icon type="eye" style={{marginRight: '10px'}}/>
+                            <a style={{marginRight: '10px'}}>
+                                <Switch checkedChildren="显示" unCheckedChildren="隐藏" onChange={this.switchOnchange} defaultChecked/>
                             </a>
-                            <a>
-                                <Icon type="delete"/>
-                            </a>
+
+                            <Popconfirm
+                                title="确定删除这个目录吗？"
+                                onConfirm={() => handledelete(a)}
+                                okText="Yes"
+                                cancelText="No"
+                            >
+                                <a>
+                                     <Icon type="delete" title='删除目录'/>
+                                </a>
+                            </Popconfirm>
                         </div>
                     )
                 },
@@ -133,6 +143,7 @@ class Category extends React.Component {
                     添加一级目录
                 </Button>
                 <Table
+
                     style={{marginTop: '15px'}}
                     rowKey={record => record._id.$oid}
                     bordered
@@ -142,6 +153,7 @@ class Category extends React.Component {
                     dataSource={data}
                 />
                 <Modal
+                    destroyOnClose={true}
                     visible={this.state.modalVisible}
                     onCancel={this.modalCancle}
                     onOk={this.modalOk}

@@ -3,7 +3,8 @@ const initState = {
     submitdata:{},
     // content:{},
     category:[],
-    contentlist:{}
+    contentlist:{},
+    picurls:[]
 }
 
 
@@ -19,6 +20,8 @@ const reducer = (state=initState,action)=>{
             return {...state,category: action.text}
         case 'allcontent':
             return {...state,contentlist: action.text}
+        case 'picurls':
+            return {...state,picurls: action.text}
         default:
             return state
     }

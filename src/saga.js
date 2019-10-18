@@ -48,11 +48,20 @@ function* getConlentlist() {
     yield takeEvery('contentlist',getConlentlistAsync)
 }
 
+function* getpicurlAsync() {
+    let data
+    yield axios.get('https://stayalone.cn/picmanage').then(res=>data=res.data.data)
+    yield put({type:'picurls',text:data})
+}
+function* getpicurl() {
+    yield takeEvery('getpicurl',getpicurlAsync)
+}
 export default function* rootsaga() {
     yield all([
         login(),
         // getContent(),
         getCategory(),
-        getConlentlist()
+        getConlentlist(),
+        getpicurl()
     ])
 }

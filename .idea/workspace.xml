@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d0db196b-e96f-4fd3-837a-9272d1b212cd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/picmanage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/category.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/category.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/picmanage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/picmanage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/saga.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/saga.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uploadimage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/uploadimage.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,10 +34,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="Python Script" />
         <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -47,8 +53,11 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/start/static" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -73,7 +82,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.eject">
+  <component name="RunManager" selected="npm.npm start">
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
       <method v="2" />
     </configuration>
@@ -163,9 +172,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.eject" />
         <item itemvalue="Python.app" />
         <item itemvalue="npm.build" />
+        <item itemvalue="npm.eject" />
         <item itemvalue="Python.index" />
         <item itemvalue="npm.start" />
       </list>
@@ -203,7 +212,13 @@
       <workItem from="1570756264124" duration="24442000" />
       <workItem from="1570844034954" duration="1122000" />
       <workItem from="1570845502973" duration="82000" />
-      <workItem from="1570845609665" duration="3212000" />
+      <workItem from="1570845609665" duration="4003000" />
+      <workItem from="1571019533720" duration="1254000" />
+      <workItem from="1571023694936" duration="12966000" />
+      <workItem from="1571101424258" duration="21047000" />
+      <workItem from="1571361656863" duration="9962000" />
+      <workItem from="1571379262634" duration="639000" />
+      <workItem from="1571379965726" duration="8856000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1569319231876</created>
@@ -282,7 +297,28 @@
       <option name="project" value="LOCAL" />
       <updated>1570852904597</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="edit content">
+      <created>1570853008163</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1570853008163</updated>
+    </task>
+    <task id="LOCAL-00013" summary="edit content">
+      <created>1570853040257</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1570853040257</updated>
+    </task>
+    <task id="LOCAL-00014" summary="目录管理">
+      <created>1571132815486</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1571132815486</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -310,10 +346,11 @@
     <MESSAGE value="safe" />
     <MESSAGE value="contentlist" />
     <MESSAGE value="edit content" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit content" />
+    <MESSAGE value="目录管理" />
+    <option name="LAST_COMMIT_MESSAGE" value="目录管理" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/reactbackend$index.coverage" NAME="index Coverage Results" MODIFIED="1570672806583" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/api" />
-    <SUITE FILE_PATH="coverage/reactbackend$app.coverage" NAME="app Coverage Results" MODIFIED="1570772651359" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/start" />
+    <SUITE FILE_PATH="coverage/reactbackend$app.coverage" NAME="app Coverage Results" MODIFIED="1571040570969" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/start" />
   </component>
 </project>

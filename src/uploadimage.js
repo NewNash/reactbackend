@@ -35,7 +35,12 @@ class PicturesWall extends React.Component {
         });
     };
 
-    handleChange = ({fileList}) => this.setState({fileList});
+    // handleChange = ({fileList}) => {
+    //     this.setState({fileList})
+    // };
+    handleChange = (a,b,c)=>{
+        console.log(a,b,c)
+    }
 
     render() {
         const {previewVisible, previewImage, fileList} = this.state;
@@ -48,7 +53,8 @@ class PicturesWall extends React.Component {
         return (
             <div className="clearfix">
                 <Upload
-                    action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                    name='myfile'
+                    action="https://stayalone.cn/uploadimg"
                     listType="picture-card"
                     fileList={fileList}
                     onPreview={this.handlePreview}
