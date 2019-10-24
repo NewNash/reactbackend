@@ -46,9 +46,6 @@ class Formdemo extends React.Component {
         this.setState({tags:tags})
     }
     componentDidMount() {
-        // if(this.props.location.pathname==='/edit-content'){
-        //     this.props.dispatch({type: 'getContent'})
-        // }
         this.props.dispatch({type: 'getCategory'})
     }
 
@@ -58,7 +55,7 @@ class Formdemo extends React.Component {
             console.log(values)
             if (!error) {
                 const submitData = {
-                    imgSrc:'',
+                    imgSrc:this.props.coverImgUrl,
                     title: values.title,
                     content: values.content.toRAW(),
                     HtmlContent: values.content.toHTML(),
@@ -67,6 +64,7 @@ class Formdemo extends React.Component {
                     subCategory:values.category[1],
                     tag:values.tags
                 }
+                console.log(submitData)
                 this.props.dispatch({type: 'submit', text: submitData})
             }
         })
@@ -79,15 +77,13 @@ class Formdemo extends React.Component {
         const excludeControls = ['emoji', 'undo', 'redo', 'headings', 'list-ul', 'list-ol', 'font-size',
             'font-family', 'line-height', 'letter-spacing', 'bold', 'italic']
         const myUploadFn = (param) => {
-            console.log(param)
             const data = new FormData()
-            data.append('myfile', param.file)
-
-            axios.post('http://127.0.0.1:3001/upload', data, {
+            data.append('mycontentimg', param.file)
+            axios.post('https://stayalone.cn/uploadimg', data, {
                 headers: {"Content-Type": "multipart/form-data"}
             })
                 .then((res) => {
-                    param.success({url: res.data})
+                    param.success({url: res.data.data})
                 })
         }
         const categoryOptions = (categorys) => {
@@ -116,7 +112,9 @@ class Formdemo extends React.Component {
             <div style={{width:'80%',padding:'20px',backgroundColor:'#fff'}}>
                 {/*<UploadImage/>*/}
                 <Form onSubmit={this.handleSubmit}>
-                    <UploadImage  />
+                    <UploadImage
+                        imgurl={ifEditContent?init_content.imgSrc:''}
+                    />
                     <Form.Item
                     >
                         {getFieldDecorator('title', {
@@ -192,7 +190,8 @@ const mapStateToProps = (state) => ({
     submitdata: state.submitdata,
     content: state.content,
     category: state.category,
-    currentSubcategory: state.currentSubcategory
+    currentSubcategory: state.currentSubcategory,
+    coverImgUrl:state.coverImgUrl
 })
 const mapDispatchToProps = (dispatch) => ({
     dispatch

@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d0db196b-e96f-4fd3-837a-9272d1b212cd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/picmanage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/category.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/category.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/picmanage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/picmanage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/editor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/editor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/saga.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/saga.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/uploadimage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/uploadimage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/uploadimg.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/uploadimg.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -218,7 +217,11 @@
       <workItem from="1571101424258" duration="21047000" />
       <workItem from="1571361656863" duration="9962000" />
       <workItem from="1571379262634" duration="639000" />
-      <workItem from="1571379965726" duration="8856000" />
+      <workItem from="1571379965726" duration="9048000" />
+      <workItem from="1571644477895" duration="7075000" />
+      <workItem from="1571730840080" duration="9066000" />
+      <workItem from="1571817975858" duration="18493000" />
+      <workItem from="1571904391883" duration="7001000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1569319231876</created>
@@ -318,7 +321,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571132815486</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="上传图片">
+      <created>1571392943787</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1571392943787</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -347,7 +357,8 @@
     <MESSAGE value="contentlist" />
     <MESSAGE value="edit content" />
     <MESSAGE value="目录管理" />
-    <option name="LAST_COMMIT_MESSAGE" value="目录管理" />
+    <MESSAGE value="上传图片" />
+    <option name="LAST_COMMIT_MESSAGE" value="上传图片" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/reactbackend$index.coverage" NAME="index Coverage Results" MODIFIED="1570672806583" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/api" />

@@ -1,10 +1,10 @@
 const initState = {
     iflogin:false,
     submitdata:{},
-    // content:{},
     category:[],
     contentlist:{},
-    picurls:[]
+    picurls:[],
+    coverImgUrl:''
 }
 
 
@@ -22,6 +22,8 @@ const reducer = (state=initState,action)=>{
             return {...state,contentlist: action.text}
         case 'picurls':
             return {...state,picurls: action.text}
+        case 'coverImgUrl':
+            return {...state,coverImgUrl: action.text}
         default:
             return state
     }
