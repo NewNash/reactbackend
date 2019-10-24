@@ -120,7 +120,7 @@ class Category extends React.Component {
 
                     return (
                         <div>
-                            <a>
+                            <a href='#'>
                                 <Icon type="plus" style={{marginRight: '10px'}} title='添加二级目录' onClick={()=>this.subshowModal(record)}/>
                             </a>
                             <a style={{marginRight: '10px'}}>
