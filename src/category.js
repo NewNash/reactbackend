@@ -107,7 +107,7 @@ class Category extends React.Component {
                         })
                     }
                     const switchOnchange = (ifshow) => {
-                        axios.post('https://stayalone.cn/editcategory', {
+                        axios.post('https://stayalone.cn/modifycategory', {
                             categoryname: record.name,
                             show: ifshow
                         }).then((res) => {
@@ -157,7 +157,7 @@ class Category extends React.Component {
                 })
             }
             const switchOnchange=(ifshow,text)=>{
-                axios.post('https://stayalone.cn/editsubcategory',{
+                axios.post('https://stayalone.cn/modifysubcategory',{
                     category_id:record._id.$oid,
                     subcategory_id:text._id.$oid,
                     show:ifshow

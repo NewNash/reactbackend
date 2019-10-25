@@ -15,6 +15,7 @@ import UploadImage from "./uploadimage";
 import TagsInput from "react-tagsinput";
 import 'react-tagsinput/react-tagsinput.css'
 import './uploadimg.css'
+
 BraftEditor.use([
     CodeHighlighter({
         syntaxs: [
@@ -38,13 +39,15 @@ BraftEditor.use([
 ])
 
 class Formdemo extends React.Component {
-    constructor(){
+    constructor() {
         super()
-        this.state={tags:[]}
+        this.state = {tags: []}
     }
-    handleTagsInputChange(tags){
-        this.setState({tags:tags})
+
+    handleTagsInputChange(tags) {
+        this.setState({tags: tags})
     }
+
     componentDidMount() {
         this.props.dispatch({type: 'getCategory'})
     }
@@ -55,24 +58,32 @@ class Formdemo extends React.Component {
             console.log(values)
             if (!error) {
                 const submitData = {
-                    imgSrc:this.props.coverImgUrl,
+                    // imgSrc: this.props.coverImgUrl,
                     title: values.title,
                     content: values.content.toRAW(),
                     HtmlContent: values.content.toHTML(),
                     currentCategory: values.category,
                     category: values.category[0],
-                    subCategory:values.category[1],
-                    tag:values.tags
+                    subCategory: values.category[1],
+                    tag: values.tags
                 }
-                console.log(submitData)
-                this.props.dispatch({type: 'submit', text: submitData})
+                if (this.props.location.pathname === '/admin/modify-article') {
+                    // console.log(submitData)
+                    // axios.post('https://stayalone.cn/modifyarticle',submitData).then((res)=>console.log(res))
+                }
+                if (this.props.location.pathname === '/admin/add-article') {
+
+                    // axios.post('https://stayalone.cn/addarticle', submitData).then((res) => console.log(res))
+                }
+
+                // this.props.dispatch({type: 'submit', text: submitData})
             }
         })
     }
 
     render() {
-        const ifEditContent = this.props.location.pathname==='/admin/edit-content'
-        const init_content = this.props.location.state?this.props.location.state.text:{}
+        const ifEditContent = this.props.location.pathname === '/admin/modify-article'
+        const init_content = this.props.location.state ? this.props.location.state.text : {}
         const {getFieldDecorator} = this.props.form
         const excludeControls = ['emoji', 'undo', 'redo', 'headings', 'list-ul', 'list-ol', 'font-size',
             'font-family', 'line-height', 'letter-spacing', 'bold', 'italic']
@@ -109,35 +120,44 @@ class Formdemo extends React.Component {
             return array
         }
         return (
-            <div style={{width:'80%',padding:'20px',backgroundColor:'#fff'}}>
+            <div style={{width: '80%', padding: '20px', backgroundColor: '#fff'}}>
                 {/*<UploadImage/>*/}
                 <Form onSubmit={this.handleSubmit}>
-                    <UploadImage
-                        imgurl={ifEditContent?init_content.imgSrc:''}
-                    />
+                    <Form.Item>
+                        {getFieldDecorator('coverImg', {
+                            initialValue:{url:'123'}
+                            // initialValue:init_content.imgSrc||''
+                        })(
+                            <UploadImage
+                                // value='4234'
+                                // imgurl={init_content.imgSrc || ''}
+                            />
+                        )
+                        }
+                    </Form.Item>
                     <Form.Item
                     >
                         {getFieldDecorator('title', {
-                            initialValue: ifEditContent?init_content.title:'',
+                            initialValue: ifEditContent ? init_content.title : '',
                             rules: [{
                                 required: true,
                                 message: '请输入标题',
                             }],
                         })(
                             <Input placeholder='请输入标题'
-                                   style={{width:'40%'}}
+                                   style={{width: '40%'}}
                             />
                         )}
                     </Form.Item>
                     <Form.Item
                     >
                         {getFieldDecorator('category', {
-                            initialValue: ifEditContent?[init_content.category, init_content.subCategory]:[]
+                            initialValue: ifEditContent ? [init_content.category, init_content.subCategory] : []
                         })(
                             <Cascader
                                 options={this.props.category[0] ? categoryOptions(this.props.category) : []}
                                 expandTrigger="hover"
-                                style={{width:300}}
+                                style={{width: 300}}
                                 placeholder="请选择目录"
                             />
                         )}
@@ -146,7 +166,7 @@ class Formdemo extends React.Component {
                     >
                         {getFieldDecorator('content', {
                             validateTrigger: 'onBlur',
-                            initialValue: ifEditContent?BraftEditor.createEditorState(init_content.content):'',
+                            initialValue: ifEditContent ? BraftEditor.createEditorState(init_content.content) : '',
                             rules: [{
                                 required: true,
                                 validator: (_, value, callback) => {
@@ -166,11 +186,11 @@ class Formdemo extends React.Component {
                         )}
                     </Form.Item>
                     <Form.Item>
-                        {getFieldDecorator('tags',{
-                            initialValue:ifEditContent?init_content.tag:[]
+                        {getFieldDecorator('tags', {
+                            initialValue: ifEditContent ? init_content.tag : []
                         })(
-                            <TagsInput style={{lineHeight:2}}
-                               onchange={(e)=>this.handleTagsInputChange(e)}
+                            <TagsInput style={{lineHeight: 2}}
+                                       onchange={(e) => this.handleTagsInputChange(e)}
                             />
                         )}
                     </Form.Item>
@@ -191,7 +211,7 @@ const mapStateToProps = (state) => ({
     content: state.content,
     category: state.category,
     currentSubcategory: state.currentSubcategory,
-    coverImgUrl:state.coverImgUrl
+    coverImgUrl: state.coverImgUrl
 })
 const mapDispatchToProps = (dispatch) => ({
     dispatch

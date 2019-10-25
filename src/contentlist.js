@@ -58,7 +58,7 @@ class ContentList extends React.Component {
                 render: (a, b) => {
                     return (
                         <span>
-                            <Link to={{pathname:'/admin/edit-content',state:{text:a}}}>
+                            <Link to={{pathname:'/admin/modify-article',state:{text:a}}}>
                                 <Icon type="edit" title='编辑文章'/>
                             </Link>
                             <Divider type='vertical'/>

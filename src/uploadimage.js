@@ -1,6 +1,5 @@
 import React from "react";
 import {Upload, Icon, Modal} from 'antd';
-import {connect} from 'react-redux'
 // import './uploadimg.css'
 
 // function getBase64(file) {
@@ -12,17 +11,22 @@ import {connect} from 'react-redux'
 //     });
 // }
 
-class UploadImg extends React.Component {
-    state = {
-        previewVisible: false,
-        previewImage: '',
-        fileList: this.props.imgurl ? [{
-            uid: '-1',
-            name: 'image.png',
-            status: 'done',
-            url: this.props.imgurl
-        }] : []
-    };
+export default class UploadImg extends React.Component {
+    constructor(props) {
+        super(props)
+        const value = props.value
+        this.state = {
+            previewVisible: false,
+            previewImage: '',
+            url: value.url || '',
+            fileList: this.props.imgurl ? [{
+                uid: '-1',
+                name: 'image.png',
+                status: 'done',
+                url: this.props.imgurl
+            }] : []
+        };
+    }
 
     handleCancel = () => this.setState({previewVisible: false});
 
@@ -32,18 +36,33 @@ class UploadImg extends React.Component {
         //     file.preview = await getBase64(file.originFileObj);
         // }
         this.setState({
-            previewImage: file.url||file.response.data,
+            previewImage: file.url || file.response.data,
             previewVisible: true,
         });
     };
     handleChange = (info) => {
         let fileList = info.fileList
-        this.setState({fileList: [...fileList]});
+        this.setState({
+            fileList: [...fileList],
+        });
         if (info.file.status === 'done') {
-            this.props.dispatch({type: 'coverImgUrl', text: info.file.response.data})
+            // this.props.dispatch({type: 'coverImgUrl', text: info.file.response.data})
+            const url = info.file.response.data
+            // this.setState({
+            //     url: info.file.response.data
+            // })
+            this.triggerChange({url})
         }
-
     }
+    triggerChange = changedValue => {
+        const {onChange} = this.props;
+        if (onChange) {
+            onChange({
+                ...this.state,
+                ...changedValue,
+            });
+        }
+    };
 
     render() {
         const {previewVisible, previewImage, fileList} = this.state;
@@ -56,6 +75,7 @@ class UploadImg extends React.Component {
         return (
             <div className="clearfix">
                 <Upload
+                    value={this.state.url}
                     name='mycoverimg'
                     action="https://stayalone.cn/uploadimg"
                     listType="picture-card"
@@ -74,4 +94,4 @@ class UploadImg extends React.Component {
     }
 }
 
-export default connect()(UploadImg)
+// export default connect()(UploadImg)
