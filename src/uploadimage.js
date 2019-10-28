@@ -15,21 +15,20 @@ export default class UploadImg extends React.Component {
     constructor(props) {
         super(props)
         const value = props.value
+        console.log(this.props)
         this.state = {
             previewVisible: false,
             previewImage: '',
             url: value.url || '',
-            fileList: this.props.imgurl ? [{
+            fileList: value.url ? [{
                 uid: '-1',
                 name: 'image.png',
                 status: 'done',
-                url: this.props.imgurl
+                url: value.url
             }] : []
         };
     }
-
     handleCancel = () => this.setState({previewVisible: false});
-
     handlePreview = file => {
         // console.log(file)
         // if (!file.url && !file.preview) {
@@ -51,18 +50,11 @@ export default class UploadImg extends React.Component {
             // this.setState({
             //     url: info.file.response.data
             // })
-            this.triggerChange({url})
+            if(this.props.onChange){
+                this.props.onChange({url})
+            }
         }
     }
-    triggerChange = changedValue => {
-        const {onChange} = this.props;
-        if (onChange) {
-            onChange({
-                ...this.state,
-                ...changedValue,
-            });
-        }
-    };
 
     render() {
         const {previewVisible, previewImage, fileList} = this.state;

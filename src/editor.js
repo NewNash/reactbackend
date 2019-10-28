@@ -4,7 +4,7 @@ import 'braft-extensions/dist/code-highlighter.css'
 import 'braft-extensions/dist/color-picker.css'
 import {connect} from 'react-redux'
 import React from 'react'
-import {Form, Input, Button, Cascader} from 'antd'
+import {Form, Input, Button, Cascader,message} from 'antd'
 import BraftEditor from 'braft-editor'
 import CodeHighlighter from 'braft-extensions/dist/code-highlighter'
 import ColorPicker from 'braft-extensions/dist/color-picker'
@@ -58,7 +58,7 @@ class Formdemo extends React.Component {
             console.log(values)
             if (!error) {
                 const submitData = {
-                    // imgSrc: this.props.coverImgUrl,
+                    imgSrc: values.coverImg.url,
                     title: values.title,
                     content: values.content.toRAW(),
                     HtmlContent: values.content.toHTML(),
@@ -68,12 +68,32 @@ class Formdemo extends React.Component {
                     tag: values.tags
                 }
                 if (this.props.location.pathname === '/admin/modify-article') {
+                    console.log(submitData)
                     // console.log(submitData)
-                    // axios.post('https://stayalone.cn/modifyarticle',submitData).then((res)=>console.log(res))
+                    const modyfiData = {...submitData,_id:this.props.location.state.text._id.$oid}
+                    console.log(modyfiData)
+                    axios.post('https://stayalone.cn/modifyarticle',modyfiData).then((res)=>{
+                        // console.log(res)
+                        if(res.data==='ok'){
+                            message.success('文章修改成功')
+                            window.location.href='/admin/articlelist'
+                        }
+                        else{
+                            message.error('文章修改失败')
+                        }
+                    })
                 }
                 if (this.props.location.pathname === '/admin/add-article') {
-
-                    // axios.post('https://stayalone.cn/addarticle', submitData).then((res) => console.log(res))
+                    console.log(submitData)
+                    axios.post('https://stayalone.cn/addarticle', submitData).then((res) => {
+                        if(res.data==='ok'){
+                            message.success('添加文章成功')
+                            window.location.reload()
+                        }
+                        else {
+                            message.error('文章添加失败，请重新提交')
+                        }
+                    })
                 }
 
                 // this.props.dispatch({type: 'submit', text: submitData})
@@ -119,21 +139,19 @@ class Formdemo extends React.Component {
             }
             return array
         }
+        const handleCancle = ()=>{
+            window.history.go(-1)
+        }
         return (
             <div style={{width: '80%', padding: '20px', backgroundColor: '#fff'}}>
                 {/*<UploadImage/>*/}
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Item>
                         {getFieldDecorator('coverImg', {
-                            initialValue:{url:'123'}
-                            // initialValue:init_content.imgSrc||''
+                            initialValue:{url:init_content.imgSrc||''}
                         })(
-                            <UploadImage
-                                // value='4234'
-                                // imgurl={init_content.imgSrc || ''}
-                            />
-                        )
-                        }
+                            <UploadImage/>
+                        )}
                     </Form.Item>
                     <Form.Item
                     >
@@ -194,8 +212,11 @@ class Formdemo extends React.Component {
                             />
                         )}
                     </Form.Item>
-                    <Form.Item>
+                    <Form.Item >
+                        <div style={{width:'40%',display:"flex",justifyContent:'space-between'}}>
+                            <Button size="large" type="default" onClick={handleCancle}>取消</Button>
                         <Button size="large" type="primary" htmlType="submit">提交</Button>
+                        </div>
                     </Form.Item>
                 </Form>
                 {/*<div className="braft-output-content"*/}
