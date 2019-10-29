@@ -18,7 +18,7 @@ const reducer = (state=initState,action)=>{
         //     return {...state,content:action.text}
         case 'category':
             return {...state,category: action.text}
-        case 'allcontent':
+        case 'search_result_content':
             return {...state,contentlist: action.text}
         case 'picurls':
             return {...state,picurls: action.text}

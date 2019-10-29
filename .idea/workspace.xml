@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d0db196b-e96f-4fd3-837a-9272d1b212cd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/searchbox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/searchbox.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/contentlist.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/contentlist.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/editor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/editor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uploadimage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/uploadimage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/saga.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/saga.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,8 +34,8 @@
       <list>
         <option value="Python Script" />
         <option value="HTML File" />
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -46,7 +48,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/start/static" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -59,11 +61,12 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\demo\reactbackend\start\static" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\demo\reactbackend\api" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\demo\reactbackend\src" />
+      <recent name="E:\demo\reactbackend\start\static" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -220,7 +223,8 @@
       <workItem from="1571817975858" duration="18493000" />
       <workItem from="1571904391883" duration="14530000" />
       <workItem from="1571990245942" duration="12198000" />
-      <workItem from="1572249912168" duration="12207000" />
+      <workItem from="1572249912168" duration="12267000" />
+      <workItem from="1572335781372" duration="26143000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1569319231876</created>
@@ -348,7 +352,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572018107677</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="修改二级目录">
+      <created>1572278338926</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1572278338926</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
