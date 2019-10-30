@@ -73,17 +73,16 @@ class ContentList extends React.Component {
                         })
                     }
                     const switchChange=(ifshow)=>{
-                        console.log(record)
-                        // axios.post('https://stayalone.cn/showarticle',{
-                        //     _id:record._id.$oid,
-                        //     show:ifshow,
-                        // }).then((res)=>{
-                        //      if(res.data==='ok'){
-                        //         message.success('修改成功')
-                        //         window.location.reload()
-                        //     }
-                        // })
-
+                        // console.log(record)
+                        axios.post('https://stayalone.cn/showarticle',{
+                            _id:record._id.$oid,
+                            show:ifshow,
+                        }).then((res)=>{
+                             if(res.data==='ok'){
+                                message.success('修改成功')
+                                window.location.reload()
+                            }
+                        })
                     }
                     return (
                         <span>
