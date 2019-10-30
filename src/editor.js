@@ -11,7 +11,10 @@ import ColorPicker from 'braft-extensions/dist/color-picker'
 import Markdown from 'braft-extensions/dist/markdown'
 import 'prismjs/components/prism-python'
 import axios from 'axios'
-
+import UploadImage from "./uploadimage";
+import TagsInput from "react-tagsinput";
+import 'react-tagsinput/react-tagsinput.css'
+import './uploadimg.css'
 BraftEditor.use([
     CodeHighlighter({
         syntaxs: [
@@ -35,29 +38,43 @@ BraftEditor.use([
 ])
 
 class Formdemo extends React.Component {
-
+    constructor(){
+        super()
+        this.state={tags:[]}
+    }
+    handleTagsInputChange(tags){
+        this.setState({tags:tags})
+    }
     componentDidMount() {
-        // this.props.dispatch({type: 'getContent'})
+        // if(this.props.location.pathname==='/edit-content'){
+        //     this.props.dispatch({type: 'getContent'})
+        // }
         this.props.dispatch({type: 'getCategory'})
     }
 
     handleSubmit = (event) => {
         event.preventDefault()
         this.props.form.validateFields((error, values) => {
+            console.log(values)
             if (!error) {
                 const submitData = {
+                    imgSrc:'',
                     title: values.title,
-                    RawContent: values.content.toRAW(),
+                    content: values.content.toRAW(),
                     HtmlContent: values.content.toHTML(),
-                    currentCategory: values.category
+                    currentCategory: values.category,
+                    category: values.category[0],
+                    subCategory:values.category[1],
+                    tag:values.tags
                 }
-                console.log(submitData)
                 this.props.dispatch({type: 'submit', text: submitData})
             }
         })
     }
 
     render() {
+        const ifEditContent = this.props.location.pathname==='/admin/edit-content'
+        const init_content = this.props.location.state?this.props.location.state.text:{}
         const {getFieldDecorator} = this.props.form
         const excludeControls = ['emoji', 'undo', 'redo', 'headings', 'list-ul', 'list-ol', 'font-size',
             'font-family', 'line-height', 'letter-spacing', 'bold', 'italic']
@@ -97,25 +114,27 @@ class Formdemo extends React.Component {
         }
         return (
             <div style={{width:'80%',padding:'20px',backgroundColor:'#fff'}}>
+                {/*<UploadImage/>*/}
                 <Form onSubmit={this.handleSubmit}>
+                    <UploadImage  />
                     <Form.Item
-
                     >
                         {getFieldDecorator('title', {
-                            // initialValue: this.props.content.title,
+                            initialValue: ifEditContent?init_content.title:'',
                             rules: [{
                                 required: true,
                                 message: '请输入标题',
                             }],
                         })(
-                            <Input placeholder='请输入标题'/>
+                            <Input placeholder='请输入标题'
+                                   style={{width:'40%'}}
+                            />
                         )}
                     </Form.Item>
                     <Form.Item
-
                     >
                         {getFieldDecorator('category', {
-                            // initialValue: [this.props.content.category, this.props.content.subCategory]
+                            initialValue: ifEditContent?[init_content.category, init_content.subCategory]:[]
                         })(
                             <Cascader
                                 options={this.props.category[0] ? categoryOptions(this.props.category) : []}
@@ -126,11 +145,10 @@ class Formdemo extends React.Component {
                         )}
                     </Form.Item>
                     <Form.Item
-
                     >
                         {getFieldDecorator('content', {
                             validateTrigger: 'onBlur',
-                            initialValue: BraftEditor.createEditorState(this.props.content.content),
+                            initialValue: ifEditContent?BraftEditor.createEditorState(init_content.content):'',
                             rules: [{
                                 required: true,
                                 validator: (_, value, callback) => {
@@ -143,11 +161,18 @@ class Formdemo extends React.Component {
                             }],
                         })(
                             <BraftEditor
-                                // value={this.props.content.content}
-
-                                style={{border: '1px solid #eee', borderRadius: '3px',height:'450px',overflow:'hidden'}}
+                                className='myBraftEditor'
                                 media={{uploadFn: myUploadFn}}
                                 excludeControls={excludeControls}
+                            />
+                        )}
+                    </Form.Item>
+                    <Form.Item>
+                        {getFieldDecorator('tags',{
+                            initialValue:ifEditContent?init_content.tag:[]
+                        })(
+                            <TagsInput style={{lineHeight:2}}
+                               onchange={(e)=>this.handleTagsInputChange(e)}
                             />
                         )}
                     </Form.Item>
@@ -155,10 +180,9 @@ class Formdemo extends React.Component {
                         <Button size="large" type="primary" htmlType="submit">提交</Button>
                     </Form.Item>
                 </Form>
-                <div className="braft-output-content"
-                     dangerouslySetInnerHTML={{__html: this.props.submitdata.HtmlContent}}>
-                </div>
-
+                {/*<div className="braft-output-content"*/}
+                {/*     dangerouslySetInnerHTML={{__html: this.props.submitdata.HtmlContent}}>*/}
+                {/*</div>*/}
             </div>
         )
     }

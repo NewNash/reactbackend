@@ -19,28 +19,49 @@ function* logindata(action) {
     yield put({type: 'login', text: data})
 }
 
-function* getContentAsync() {
-    let data
-    yield axios.get('https://neveralone.cn/api/articleInfo?id=5d8c623d0f2ae6058072063e').then((res)=>data = res.data[0])
-    yield put({type:'content',text:data})
-}
-function* getContent(){
-    yield takeEvery('getContent',getContentAsync)
-}
+// function* getContentAsync() {
+//     let data
+//     yield axios.get('https://neveralone.cn/api/articleInfo?id=5d8c623d0f2ae6058072063e').then((res)=>data = res.data[0])
+//     yield put({type:'content',text:data})
+// }
+// function* getContent(){
+//     yield takeEvery('getContent',getContentAsync)
+// }
 
 
 function* getCategoryAsync() {
     let data
-    yield axios.get('https://neveralone.cn/api/getCategory').then(res=>data=res.data)
+    yield axios.get('https://stayalone.cn/getcategory').then(res=>data=res.data.data)
     yield put({type:'category',text:data})
 }
 function* getCategory() {
     yield takeEvery('getCategory',getCategoryAsync)
 }
+
+
+function* getConlentlistAsync() {
+    let data
+    yield axios.get('https://stayalone.cn/getcontent').then(res=>data=res.data)
+    yield put({type:'allcontent',text:data})
+}
+function* getConlentlist() {
+    yield takeEvery('contentlist',getConlentlistAsync)
+}
+
+function* getpicurlAsync() {
+    let data
+    yield axios.get('https://stayalone.cn/picmanage').then(res=>data=res.data.data)
+    yield put({type:'picurls',text:data})
+}
+function* getpicurl() {
+    yield takeEvery('getpicurl',getpicurlAsync)
+}
 export default function* rootsaga() {
     yield all([
         login(),
-        getContent(),
-        getCategory()
+        // getContent(),
+        getCategory(),
+        getConlentlist(),
+        getpicurl()
     ])
 }

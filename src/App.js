@@ -4,7 +4,9 @@ import {withRouter, BrowserRouter as Router, Route, Link} from "react-router-dom
 // import {message} from "antd";
 import {Menu, Icon} from 'antd';
 import Editor from './editor'
-
+import ContentList from "./contentlist";
+import Category from "./category";
+import PicManage from "./picmanage";
 const {SubMenu} = Menu;
 
 class App extends React.Component {
@@ -17,7 +19,6 @@ class App extends React.Component {
         //     this.props.history.push('/login')
         // }
     }
-
     render() {
         return (
             <Router>
@@ -29,6 +30,11 @@ class App extends React.Component {
                         defaultOpenKeys={['sub1']}
                         mode="inline"
                     >
+                        <Menu.Item key="1">
+                            <Icon type="home"/>
+                            首页
+                            <Link to='/admin'/>
+                        </Menu.Item>
                         <SubMenu
                             key="sub1"
                             title={
@@ -38,48 +44,26 @@ class App extends React.Component {
                             </span>
                             }
                         >
-                            <Menu.ItemGroup key="g1" title="Item 1">
-                                <Menu.Item key="1"><Link to='/content'>create article</Link></Menu.Item>
-                                <Menu.Item key="2"><Link to='/edit-content'>edit article</Link></Menu.Item>
+                            <Menu.ItemGroup key="g1" title="文章管理">
+                                <Menu.Item key="2"><Link to='/admin/content'><Icon type="plus"/>发表文章</Link></Menu.Item>
+                                {/*<Menu.Item key="3"><Link to='/edit-content'><Icon type="edit"/>编辑文章</Link></Menu.Item>*/}
+                                <Menu.Item key="4"><Link to='/admin/contentlist'><Icon type="read"/>文章列表</Link></Menu.Item>
+
                             </Menu.ItemGroup>
-                            <Menu.ItemGroup key="g2" title="Item 2">
-                                <Menu.Item key="3">Option 3</Menu.Item>
-                                <Menu.Item key="4">Option 4</Menu.Item>
+                            <Menu.ItemGroup key="g2" title="目录管理">
+                                <Menu.Item key="5"><Link to='/admin/category'><Icon type="container"/>目录列表</Link></Menu.Item>
+                            </Menu.ItemGroup>
+                            <Menu.ItemGroup key="p2" title="图片管理">
+                                <Menu.Item key="6"><Link to='/admin/picmanage'><Icon type="picture"/>图片列表</Link></Menu.Item>
                             </Menu.ItemGroup>
                         </SubMenu>
-                        <SubMenu
-                            key="sub2"
-                            title={
-                                <span>
-              <Icon type="appstore"/>
-              <span>Navigation Two</span>
-            </span>
-                            }
-                        >
-                            <Menu.Item key="5">Option 5</Menu.Item>
-                            <Menu.Item key="6">Option 6</Menu.Item>
-                            <SubMenu key="sub3" title="Submenu">
-                                <Menu.Item key="7">Option 7</Menu.Item>
-                                <Menu.Item key="8">Option 8</Menu.Item>
-                            </SubMenu>
-                        </SubMenu>
-                        <SubMenu
-                            key="sub4"
-                            title={
-                                <span>
-              <Icon type="setting"/>
-              <span>Navigation Three</span>
-            </span>
-                            }
-                        >
-                            <Menu.Item key="9">Option 9</Menu.Item>
-                            <Menu.Item key="10">Option 10</Menu.Item>
-                            <Menu.Item key="11">Option 11</Menu.Item>
-                            <Menu.Item key="12">Option 12</Menu.Item>
-                        </SubMenu>
+
                     </Menu>
-                    <Route path='/content' component={Editor}/>
-                    <Route path='/edit-content' component={Editor}/>
+                    <Route path='/admin/content' component={Editor}/>
+                    <Route path='/admin/edit-content' component={Editor}/>
+                    <Route path='/admin/contentlist' component={ContentList}/>
+                    <Route path='/admin/category' component={Category}/>
+                    <Route path='/admin/picmanage' component={PicManage}/>
                 </div>
             </Router>
         )
