@@ -4,7 +4,7 @@ import 'braft-extensions/dist/code-highlighter.css'
 import 'braft-extensions/dist/color-picker.css'
 import {connect} from 'react-redux'
 import React from 'react'
-import {Form, Input, Button, Cascader} from 'antd'
+import {Form, Input, Button, Cascader,message} from 'antd'
 import BraftEditor from 'braft-editor'
 import CodeHighlighter from 'braft-extensions/dist/code-highlighter'
 import ColorPicker from 'braft-extensions/dist/color-picker'
@@ -15,6 +15,7 @@ import UploadImage from "./uploadimage";
 import TagsInput from "react-tagsinput";
 import 'react-tagsinput/react-tagsinput.css'
 import './uploadimg.css'
+
 BraftEditor.use([
     CodeHighlighter({
         syntaxs: [
@@ -38,17 +39,16 @@ BraftEditor.use([
 ])
 
 class Formdemo extends React.Component {
-    constructor(){
+    constructor() {
         super()
-        this.state={tags:[]}
+        this.state = {tags: []}
     }
-    handleTagsInputChange(tags){
-        this.setState({tags:tags})
+
+    handleTagsInputChange(tags) {
+        this.setState({tags: tags})
     }
+
     componentDidMount() {
-        // if(this.props.location.pathname==='/edit-content'){
-        //     this.props.dispatch({type: 'getContent'})
-        // }
         this.props.dispatch({type: 'getCategory'})
     }
 
@@ -58,36 +58,63 @@ class Formdemo extends React.Component {
             console.log(values)
             if (!error) {
                 const submitData = {
-                    imgSrc:'',
+                    imgSrc: values.coverImg.url,
                     title: values.title,
                     content: values.content.toRAW(),
                     HtmlContent: values.content.toHTML(),
                     currentCategory: values.category,
                     category: values.category[0],
-                    subCategory:values.category[1],
-                    tag:values.tags
+                    subCategory: values.category[1],
+                    tag: values.tags
                 }
-                this.props.dispatch({type: 'submit', text: submitData})
+                if (this.props.location.pathname === '/admin/modify-article') {
+                    console.log(submitData)
+                    // console.log(submitData)
+                    const modyfiData = {...submitData,_id:this.props.location.state.text._id.$oid}
+                    console.log(modyfiData)
+                    axios.post('https://stayalone.cn/modifyarticle',modyfiData).then((res)=>{
+                        // console.log(res)
+                        if(res.data==='ok'){
+                            message.success('文章修改成功')
+                            window.location.href='/admin/articlelist'
+                        }
+                        else{
+                            message.error('文章修改失败')
+                        }
+                    })
+                }
+                if (this.props.location.pathname === '/admin/add-article') {
+                    console.log(submitData)
+                    axios.post('https://stayalone.cn/addarticle', submitData).then((res) => {
+                        if(res.data==='ok'){
+                            message.success('添加文章成功')
+                            window.location.reload()
+                        }
+                        else {
+                            message.error('文章添加失败，请重新提交')
+                        }
+                    })
+                }
+
+                // this.props.dispatch({type: 'submit', text: submitData})
             }
         })
     }
 
     render() {
-        const ifEditContent = this.props.location.pathname==='/admin/edit-content'
-        const init_content = this.props.location.state?this.props.location.state.text:{}
+        const ifEditContent = this.props.location.pathname === '/admin/modify-article'
+        const init_content = this.props.location.state ? this.props.location.state.text : {}
         const {getFieldDecorator} = this.props.form
         const excludeControls = ['emoji', 'undo', 'redo', 'headings', 'list-ul', 'list-ol', 'font-size',
             'font-family', 'line-height', 'letter-spacing', 'bold', 'italic']
         const myUploadFn = (param) => {
-            console.log(param)
             const data = new FormData()
-            data.append('myfile', param.file)
-
-            axios.post('http://127.0.0.1:3001/upload', data, {
+            data.append('mycontentimg', param.file)
+            axios.post('https://stayalone.cn/uploadimg', data, {
                 headers: {"Content-Type": "multipart/form-data"}
             })
                 .then((res) => {
-                    param.success({url: res.data})
+                    param.success({url: res.data.data})
                 })
         }
         const categoryOptions = (categorys) => {
@@ -112,34 +139,43 @@ class Formdemo extends React.Component {
             }
             return array
         }
+        const handleCancle = ()=>{
+            window.history.go(-1)
+        }
         return (
-            <div style={{width:'80%',padding:'20px',backgroundColor:'#fff'}}>
+            <div style={{width: '80%', padding: '20px', backgroundColor: '#fff'}}>
                 {/*<UploadImage/>*/}
                 <Form onSubmit={this.handleSubmit}>
-                    <UploadImage  />
+                    <Form.Item>
+                        {getFieldDecorator('coverImg', {
+                            initialValue:{url:init_content.imgSrc||''}
+                        })(
+                            <UploadImage/>
+                        )}
+                    </Form.Item>
                     <Form.Item
                     >
                         {getFieldDecorator('title', {
-                            initialValue: ifEditContent?init_content.title:'',
+                            initialValue: ifEditContent ? init_content.title : '',
                             rules: [{
                                 required: true,
                                 message: '请输入标题',
                             }],
                         })(
                             <Input placeholder='请输入标题'
-                                   style={{width:'40%'}}
+                                   style={{width: '40%'}}
                             />
                         )}
                     </Form.Item>
                     <Form.Item
                     >
                         {getFieldDecorator('category', {
-                            initialValue: ifEditContent?[init_content.category, init_content.subCategory]:[]
+                            initialValue: ifEditContent ? [init_content.category, init_content.subCategory] : []
                         })(
                             <Cascader
                                 options={this.props.category[0] ? categoryOptions(this.props.category) : []}
                                 expandTrigger="hover"
-                                style={{width:300}}
+                                style={{width: 300}}
                                 placeholder="请选择目录"
                             />
                         )}
@@ -148,7 +184,7 @@ class Formdemo extends React.Component {
                     >
                         {getFieldDecorator('content', {
                             validateTrigger: 'onBlur',
-                            initialValue: ifEditContent?BraftEditor.createEditorState(init_content.content):'',
+                            initialValue: ifEditContent ? BraftEditor.createEditorState(init_content.content) : '',
                             rules: [{
                                 required: true,
                                 validator: (_, value, callback) => {
@@ -168,16 +204,19 @@ class Formdemo extends React.Component {
                         )}
                     </Form.Item>
                     <Form.Item>
-                        {getFieldDecorator('tags',{
-                            initialValue:ifEditContent?init_content.tag:[]
+                        {getFieldDecorator('tags', {
+                            initialValue: ifEditContent ? init_content.tag : []
                         })(
-                            <TagsInput style={{lineHeight:2}}
-                               onchange={(e)=>this.handleTagsInputChange(e)}
+                            <TagsInput style={{lineHeight: 2}}
+                                       onchange={(e) => this.handleTagsInputChange(e)}
                             />
                         )}
                     </Form.Item>
-                    <Form.Item>
+                    <Form.Item >
+                        <div style={{width:'40%',display:"flex",justifyContent:'space-between'}}>
+                            <Button size="large" type="default" onClick={handleCancle}>取消</Button>
                         <Button size="large" type="primary" htmlType="submit">提交</Button>
+                        </div>
                     </Form.Item>
                 </Form>
                 {/*<div className="braft-output-content"*/}
@@ -192,7 +231,8 @@ const mapStateToProps = (state) => ({
     submitdata: state.submitdata,
     content: state.content,
     category: state.category,
-    currentSubcategory: state.currentSubcategory
+    currentSubcategory: state.currentSubcategory,
+    coverImgUrl: state.coverImgUrl
 })
 const mapDispatchToProps = (dispatch) => ({
     dispatch

@@ -42,7 +42,7 @@ function* getCategory() {
 function* getConlentlistAsync() {
     let data
     yield axios.get('https://stayalone.cn/getcontent').then(res=>data=res.data)
-    yield put({type:'allcontent',text:data})
+    yield put({type:'search_result_content',text:data})
 }
 function* getConlentlist() {
     yield takeEvery('contentlist',getConlentlistAsync)

@@ -24,7 +24,7 @@ export default class MyLayout extends React.Component {
                     <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
                         <Menu.Item key="1">
                             <Icon type="pie-chart"/>
-                            <Link to='/content'><span>content</span></Link>
+                            <Link to='/add-content'><span>content</span></Link>
                         </Menu.Item>
                         <Menu.Item key="2">
                             <Icon type="desktop"/>

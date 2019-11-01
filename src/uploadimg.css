@@ -22,11 +22,11 @@
     overflow:hidden;
     resize:both;
 }
-.myupload{
-    position: absolute;
-    top: 1%;
-    right: 40%;
-}
+/*.myupload{*/
+/*    position: absolute;*/
+/*    top: 1%;*/
+/*    right: 40%;*/
+/*}*/
 .react-tagsinput{
     line-height: 1.5;
 }

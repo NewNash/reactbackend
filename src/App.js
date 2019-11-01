@@ -45,9 +45,9 @@ class App extends React.Component {
                             }
                         >
                             <Menu.ItemGroup key="g1" title="文章管理">
-                                <Menu.Item key="2"><Link to='/admin/content'><Icon type="plus"/>发表文章</Link></Menu.Item>
+                                <Menu.Item key="2"><Link to='/admin/add-article'><Icon type="plus"/>发表文章</Link></Menu.Item>
                                 {/*<Menu.Item key="3"><Link to='/edit-content'><Icon type="edit"/>编辑文章</Link></Menu.Item>*/}
-                                <Menu.Item key="4"><Link to='/admin/contentlist'><Icon type="read"/>文章列表</Link></Menu.Item>
+                                <Menu.Item key="4"><Link to='/admin/articlelist'><Icon type="read"/>文章列表</Link></Menu.Item>
 
                             </Menu.ItemGroup>
                             <Menu.ItemGroup key="g2" title="目录管理">
@@ -59,9 +59,9 @@ class App extends React.Component {
                         </SubMenu>
 
                     </Menu>
-                    <Route path='/admin/content' component={Editor}/>
-                    <Route path='/admin/edit-content' component={Editor}/>
-                    <Route path='/admin/contentlist' component={ContentList}/>
+                    <Route path='/admin/add-article' component={Editor}/>
+                    <Route path='/admin/modify-article' component={Editor}/>
+                    <Route path='/admin/articlelist' component={ContentList}/>
                     <Route path='/admin/category' component={Category}/>
                     <Route path='/admin/picmanage' component={PicManage}/>
                 </div>

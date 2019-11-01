@@ -1,13 +1,405 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d0db196b-e96f-4fd3-837a-9272d1b212cd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/searchbox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/searchbox.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/contentlist.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/contentlist.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/saga.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/saga.js" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="314" />
     <option name="y" value="-20" />
     <option name="width" value="1486" />
     <option name="height" value="1000" />
   </component>
+  <component name="ProjectId" id="1RGTT5Pq8HLwgd4sXkjCFaoQ1bs" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\demo\reactbackend\api" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\demo\reactbackend\src" />
+      <recent name="E:\demo\reactbackend\start\static" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="npm.npm start">
+    <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
+      <method v="2" />
+    </configuration>
+    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="reactbackend" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/start" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/start/app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="index" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="reactbackend" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/api" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/api/index.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="eject" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="eject" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="npm start" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.app" />
+        <item itemvalue="npm.build" />
+        <item itemvalue="npm.eject" />
+        <item itemvalue="Python.index" />
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d0db196b-e96f-4fd3-837a-9272d1b212cd" name="Default Changelist" comment="" />
+      <created>1569292437803</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1569292437803</updated>
+      <workItem from="1569292439185" duration="15485000" />
+      <workItem from="1569319135561" duration="275000" />
+      <workItem from="1569373383255" duration="13958000" />
+      <workItem from="1569404260815" duration="1106000" />
+      <workItem from="1569460279766" duration="15068000" />
+      <workItem from="1569491767877" duration="12000" />
+      <workItem from="1569546232630" duration="18956000" />
+      <workItem from="1569718589151" duration="22048000" />
+      <workItem from="1569799511196" duration="19823000" />
+      <workItem from="1569889708818" duration="8088000" />
+      <workItem from="1569983647343" duration="3007000" />
+      <workItem from="1570001745965" duration="1214000" />
+      <workItem from="1570083930824" duration="6626000" />
+      <workItem from="1570143991527" duration="10136000" />
+      <workItem from="1570405979424" duration="5055000" />
+      <workItem from="1570495580992" duration="276000" />
+      <workItem from="1570500683245" duration="11465000" />
+      <workItem from="1570590541471" duration="14896000" />
+      <workItem from="1570669819718" duration="20705000" />
+      <workItem from="1570756264124" duration="24442000" />
+      <workItem from="1570844034954" duration="1122000" />
+      <workItem from="1570845502973" duration="82000" />
+      <workItem from="1570845609665" duration="4003000" />
+      <workItem from="1571019533720" duration="1254000" />
+      <workItem from="1571023694936" duration="12966000" />
+      <workItem from="1571101424258" duration="21047000" />
+      <workItem from="1571361656863" duration="9962000" />
+      <workItem from="1571379262634" duration="639000" />
+      <workItem from="1571379965726" duration="9048000" />
+      <workItem from="1571644477895" duration="7075000" />
+      <workItem from="1571730840080" duration="9066000" />
+      <workItem from="1571817975858" duration="18493000" />
+      <workItem from="1571904391883" duration="14530000" />
+      <workItem from="1571990245942" duration="12198000" />
+      <workItem from="1572249912168" duration="12267000" />
+      <workItem from="1572335781372" duration="26143000" />
+    </task>
+    <task id="LOCAL-00001" summary="first">
+      <created>1569319231876</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1569319231876</updated>
+    </task>
+    <task id="LOCAL-00002" summary="登录请求">
+      <created>1569404123118</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1569404123118</updated>
+    </task>
+    <task id="LOCAL-00003" summary="登录请求">
+      <created>1569583719949</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1569583719949</updated>
+    </task>
+    <task id="LOCAL-00004" summary="上传文件">
+      <created>1569750195802</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1569750195802</updated>
+    </task>
+    <task id="LOCAL-00005" summary="选择器">
+      <created>1569834183448</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1569834183448</updated>
+    </task>
+    <task id="LOCAL-00006" summary="router">
+      <created>1569919467582</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1569919467582</updated>
+    </task>
+    <task id="LOCAL-00007" summary="router">
+      <created>1570438672437</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1570438672437</updated>
+    </task>
+    <task id="LOCAL-00008" summary="safe">
+      <created>1570506758913</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1570506758913</updated>
+    </task>
+    <task id="LOCAL-00009" summary="contentlist">
+      <created>1570614804044</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1570614804044</updated>
+    </task>
+    <task id="LOCAL-00010" summary="edit content">
+      <created>1570701087558</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1570701087558</updated>
+    </task>
+    <task id="LOCAL-00011" summary="edit content">
+      <created>1570852904597</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1570852904597</updated>
+    </task>
+    <task id="LOCAL-00012" summary="edit content">
+      <created>1570853008163</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1570853008163</updated>
+    </task>
+    <task id="LOCAL-00013" summary="edit content">
+      <created>1570853040257</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1570853040257</updated>
+    </task>
+    <task id="LOCAL-00014" summary="目录管理">
+      <created>1571132815486</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1571132815486</updated>
+    </task>
+    <task id="LOCAL-00015" summary="上传图片">
+      <created>1571392943787</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1571392943787</updated>
+    </task>
+    <task id="LOCAL-00016" summary="修改二级目录">
+      <created>1571914045996</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1571914045996</updated>
+    </task>
+    <task id="LOCAL-00017" summary="修改二级目录">
+      <created>1571914368385</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1571914368385</updated>
+    </task>
+    <task id="LOCAL-00018" summary="修改二级目录">
+      <created>1572018107677</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1572018107677</updated>
+    </task>
+    <task id="LOCAL-00019" summary="修改二级目录">
+      <created>1572278338926</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1572278338926</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="first" />
+    <MESSAGE value="登录请求" />
+    <MESSAGE value="上传文件" />
+    <MESSAGE value="选择器" />
+    <MESSAGE value="router" />
+    <MESSAGE value="safe" />
+    <MESSAGE value="contentlist" />
+    <MESSAGE value="edit content" />
+    <MESSAGE value="目录管理" />
+    <MESSAGE value="上传图片" />
+    <MESSAGE value="修改二级目录" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改二级目录" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/reactbackend$app.coverage" NAME="app Coverage Results" MODIFIED="1571040570969" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/start" />
+    <SUITE FILE_PATH="coverage/reactbackend$index.coverage" NAME="index Coverage Results" MODIFIED="1570672806583" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/api" />
   </component>
 </project>
