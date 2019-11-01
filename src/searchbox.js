@@ -17,7 +17,6 @@ class Search extends React.Component {
     handleSearch = e => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
-
             console.log('Received values of form: ', values);
             const date = values.date ? values.date.map(value => moment(value).format('YYYY-MM-DD').split('-').map(item => parseInt(item))) : 0
             const changeDate = values.changeDate ? values.changeDate.map(value => moment(value).format('YYYY-MM-DD').split('-').map(item => parseInt(item))) : 0
@@ -27,15 +26,11 @@ class Search extends React.Component {
             const subCategory = values.subCategory ? values.subCategory : 0
             const resData = {
                 title: values.title || 0, date, changeDate, show, tags,category,subCategory
-                // tag:values.tag,
-                // show:!!values.show,
-                // category:values.category,
-                // subCategory:values.subCategory
             }
             console.log(resData)
-            axios.post('https://stayalone.cn/searchcontents', resData).then((res) => {
-                this.props.dispatch({type: 'search_result_content', text: res.data})
-            })
+            // axios.post('https://stayalone.cn/searchcontents', resData).then((res) => {
+            //     this.props.dispatch({type: 'search_result_content', text: res.data})
+            // })
         });
     };
 
@@ -44,6 +39,7 @@ class Search extends React.Component {
     };
     categoryChange = (value)=>{
        const current_category = this.props.category.find((category)=>category.name === value)
+        this.props.dispatch({type:'searchOptionChange',text:{key:'category',value}})
         this.setState({
             subCategory:current_category.subCategory
         })
@@ -65,6 +61,7 @@ class Search extends React.Component {
                                     <Input
                                         allowClear={true}
                                         placeholder='请输入标题关键字进行查询'
+                                        onBlur={(e)=>{this.props.dispatch({type:'searchOptionChange',text:{key:'title',value:e.target.value}})}}
                                     />
                                 )}
                             </Form.Item>
@@ -72,14 +69,18 @@ class Search extends React.Component {
                         <Col span={6}>
                             <Form.Item label='发布时间'>
                                 {getFieldDecorator('date')(
-                                    <RangePicker/>
+                                    <RangePicker
+                                        onChange={(datemoment,datestring)=>{this.props.dispatch({type:'searchOptionChange',text:{key:'date',value:datestring}})}}
+                                    />
                                 )}
                             </Form.Item>
                         </Col>
                         <Col span={6}>
                             <Form.Item label='修改时间'>
                                 {getFieldDecorator('changeDate')(
-                                    <RangePicker/>
+                                    <RangePicker
+                                        onChange={(datemoment,datestring)=>{this.props.dispatch({type:'searchOptionChange',text:{key:'changeDate',value:datestring}})}}
+                                    />
                                 )}
                             </Form.Item>
                         </Col>
@@ -89,6 +90,7 @@ class Search extends React.Component {
                                     <Select
                                         placeholder='选择显示隐藏'
                                         allowClear={true}
+                                        onChange={(value)=>{this.props.dispatch({type:'searchOptionChange',text:{key:'show',value}})}}
                                     >
                                         <Option value={1}>
                                             显示
@@ -105,6 +107,7 @@ class Search extends React.Component {
                                 {getFieldDecorator('tags')(
                                     <Select mode='tags'
                                             placeholder='多个标签之间是’或‘的关系'
+                                            onChange={(value)=>{this.props.dispatch({type:'searchOptionChange',text:{key:'tags',value}})}}
                                     >
 
                                     </Select>
@@ -114,7 +117,8 @@ class Search extends React.Component {
                         <Col span={6}>
                             <Form.Item label='一级目录'>
                                 {getFieldDecorator('category')(
-                                    <Select onChange={(value)=>this.categoryChange(value)} placeholder='请选择一级目录'>
+                                    <Select onChange={(value)=>this.categoryChange(value)}
+                                            placeholder='请选择一级目录'>
                                         {this.props.category.map(category => {
                                             return (
                                                 <Option value={category.name} key={category.name}>
@@ -129,7 +133,9 @@ class Search extends React.Component {
                         <Col span={6}>
                             <Form.Item label='二级目录'>
                                 {getFieldDecorator('subCategory')(
-                                    <Select placeholder='选完一级目录再选二级目录'>
+                                    <Select placeholder='选完一级目录再选二级目录'
+                                            onChange={(value)=>{this.props.dispatch({type:'searchOptionChange',text:{key:'subCategory',value}})}}
+                                    >
                                         {this.state.subCategory.map(category => {
                                             return (
                                                 <Option value={category.name} key={category.name}>

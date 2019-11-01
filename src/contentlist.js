@@ -7,7 +7,7 @@ import axios from 'axios'
 import SearchBox from "./searchbox";
 class ContentList extends React.Component {
     componentDidMount() {
-        this.props.dispatch({type: 'contentlist'})
+        // this.props.dispatch({type: 'contentlist'})
     }
 
     render() {
@@ -103,10 +103,16 @@ class ContentList extends React.Component {
                 }
             },
         ]
+        const pagination = {
+            total:this.props.contentlist.count
+        }
         return (
             <div style={{width: '80%'}}>
                 <SearchBox/>
-                <Table columns={columns} rowKey={record => record._id.$oid} bordered
+                <Table columns={columns}
+                       rowKey={record => record._id.$oid}
+                       bordered
+                       pagination={pagination}
                        dataSource={this.props.contentlist.data ? this.props.contentlist.data : []}/>
             </div>
         )
