@@ -1,4 +1,4 @@
-import {all, put, takeEvery} from 'redux-saga/effects'
+import {all, put, takeEvery,select} from 'redux-saga/effects'
 
 import axios from 'axios'
 
@@ -19,16 +19,7 @@ function* logindata(action) {
     yield put({type: 'login', text: data})
 }
 
-// function* getContentAsync() {
-//     let data
-//     yield axios.get('https://neveralone.cn/api/articleInfo?id=5d8c623d0f2ae6058072063e').then((res)=>data = res.data[0])
-//     yield put({type:'content',text:data})
-// }
-// function* getContent(){
-//     yield takeEvery('getContent',getContentAsync)
-// }
-
-
+//获取目录列表
 function* getCategoryAsync() {
     let data
     yield axios.get('https://stayalone.cn/getcategory').then(res=>data=res.data.data)
@@ -38,15 +29,18 @@ function* getCategory() {
     yield takeEvery('getCategory',getCategoryAsync)
 }
 
+//获取文章列表
 function* getConlentlistAsync() {
+    const state = yield select()
     let data
-    yield axios.get('https://stayalone.cn/searchcontents').then(res=>data=res.data)
+    yield axios.post('https://stayalone.cn/searchcontents',state.contentSearchOption).then(res=>data=res.data)
     yield put({type:'search_result_content',text:data})
 }
 function* getConlentlist() {
     yield takeEvery('contentlist',getConlentlistAsync)
 }
 
+//获取图片列表
 function* getpicurlAsync() {
     let data
     yield axios.get('https://stayalone.cn/picmanage').then(res=>data=res.data.data)
