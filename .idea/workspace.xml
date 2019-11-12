@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d0db196b-e96f-4fd3-837a-9272d1b212cd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/contentlist.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/contentlist.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/saga.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/saga.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/searchbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/searchbox.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,7 +43,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
@@ -225,7 +221,8 @@
       <workItem from="1572249912168" duration="12267000" />
       <workItem from="1572335781372" duration="26208000" />
       <workItem from="1572422586618" duration="12147000" />
-      <workItem from="1572595807823" duration="18103000" />
+      <workItem from="1572595807823" duration="18147000" />
+      <workItem from="1572932432223" duration="66000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1569319231876</created>
@@ -374,7 +371,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572450226569</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="完善搜索条件查询">
+      <created>1572624047708</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1572624047709</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
