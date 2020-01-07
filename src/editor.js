@@ -76,7 +76,7 @@ class Formdemo extends React.Component {
                         // console.log(res)
                         if(res.data==='ok'){
                             message.success('文章修改成功')
-                            window.location.href='/admin/articlelist'
+                             this.props.history.push('/admin/articlelist')
                         }
                         else{
                             message.error('文章修改失败')
@@ -88,7 +88,7 @@ class Formdemo extends React.Component {
                     axios.post('https://stayalone.cn/addarticle', submitData).then((res) => {
                         if(res.data==='ok'){
                             message.success('添加文章成功')
-                            window.location.reload()
+                            this.props.history.push('/admin/articlelist')
                         }
                         else {
                             message.error('文章添加失败，请重新提交')
@@ -144,9 +144,8 @@ class Formdemo extends React.Component {
         }
         return (
             <div style={{width: '80%', padding: '20px', backgroundColor: '#fff'}}>
-                {/*<UploadImage/>*/}
                 <Form onSubmit={this.handleSubmit}>
-                    <Form.Item>
+                    <Form.Item style={{position:"absolute",right:'40%',top:10}}>
                         {getFieldDecorator('coverImg', {
                             initialValue:{url:init_content.imgSrc||''}
                         })(

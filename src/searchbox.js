@@ -1,10 +1,10 @@
 import React from "react";
-import {Form, Row, Col, Input, Button, Icon, DatePicker, Select} from "antd";
-import axios from 'axios'
+import {Form, Row, Col, Input, Button, DatePicker, Select} from "antd";
+// import axios from 'axios'
 import {connect} from 'react-redux'
 import './searchbox.css'
-import moment from "moment";
-import category from "./category";
+// import moment from "moment";
+// import category from "./category";
 
 class Search extends React.Component {
     state = {

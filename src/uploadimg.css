@@ -17,6 +17,7 @@
 }
 .myBraftEditor{
     width:70%;
+    height: 400px;
     border: 1px solid #eee;
     border-radius: 3px;
     overflow:hidden;

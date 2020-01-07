@@ -11,9 +11,10 @@ const {SubMenu} = Menu;
 
 class App extends React.Component {
     componentDidMount() {
-        if (this.props.iflogin) {
 
-        }
+        // if (this.props.iflogin) {
+        //    // this.props.history.push('/login')
+        // }
         // else{
         //     message.error('please login first')
         //     this.props.history.push('/login')

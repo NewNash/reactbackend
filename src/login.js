@@ -27,11 +27,11 @@ class LoginForm extends React.Component {
                 } else {
                     this.delCookie('username')
                 }
-                axios.post('http://127.0.0.1:3001/login', value).then((res) => {
+                axios.post('https://stayalone.cn/login', value).then((res) => {
                     if (res.data === 'ok') {
                         message.success('登陆成功')
                         this.props.dispatch({type: 'login', text: true})
-                        this.props.history.push('/')
+                        this.props.history.push('/admin')
                     } else {
                         message.error('账号或者密码不对，请重新输入！')
                         this.props.form.resetFields(['password'])
@@ -89,9 +89,8 @@ class LoginForm extends React.Component {
                         {getFieldDecorator('remember', {valuePropName: 'checked', initialValue: true})(
                             <Checkbox>Remember me</Checkbox>
                         )}
-                        <a href="/" className='login-form-forgot'>Forget password</a>
+                        {/*<a href="/" className='login-form-forgot'>Forget password</a>*/}
                         <Button type='primary' htmlType='submit' className='login-form-button'>Log in</Button>
-                        Or <a href="/">register now!</a>
                     </Form.Item>
                 </Form>
             </div>
