@@ -142,5 +142,8 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "webpack-bundle-analyzer": "^3.6.0"
   }
 }

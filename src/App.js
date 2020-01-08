@@ -40,7 +40,7 @@ class App extends React.Component {
                             key="sub1"
                             title={
                                 <span>
-                              <Icon type="mail"/>
+                              <Icon type="project" />
                              <span>内容管理</span>
                             </span>
                             }
@@ -57,6 +57,17 @@ class App extends React.Component {
                             <Menu.ItemGroup key="p2" title="图片管理">
                                 <Menu.Item key="6"><Link to='/admin/picmanage'><Icon type="picture"/>图片列表</Link></Menu.Item>
                             </Menu.ItemGroup>
+                        </SubMenu>
+                        <SubMenu
+                            key="sub2"
+                            title={
+                                <span>
+                                    <Icon type="setting" />
+                                    <span>系统管理</span>
+                                </span>
+                            }
+                        >
+                            <Menu.Item key="6"><a href='/logout'><Icon type="logout" />退出登录</a></Menu.Item>
                         </SubMenu>
 
                     </Menu>
